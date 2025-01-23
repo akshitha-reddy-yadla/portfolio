@@ -1,3 +1,10 @@
+/*
+  Notes
+  - All slides must be the same size, set with aspect ratio
+*/
+
+import styles from './projects.module.css'
+
 import React, { useRef, useState, useEffect, useCallback, createContext, useContext, RefObject } from 'react'
 import { useSprings, animated } from '@react-spring/web'
 import { createUseGesture, dragAction, hoverAction } from '@use-gesture/react'
@@ -6,10 +13,8 @@ import { useHotkeys } from 'react-hotkeys-hook'
 import { useFocusWithin } from '../../util/useFocusWithin'
 import clamp from 'lodash.clamp'
 import classNames from 'classnames'
+
 import { data as items } from './data'
-
-
-import styles from './projects.module.css';
 
 const useGesture = createUseGesture([dragAction, hoverAction])
 
@@ -38,14 +43,11 @@ type PaginationProps = {
   label?: string
 }
 
-// Vector2 type definition
-type Vector2 = { x: number; y: number };
-
 type RunSpringsProps = {
   active: boolean
-  movement: Vector2
-  direction: Vector2
-  distance: Vector2
+  movement: [number]
+  direction: [number]
+  distance: [number]
   cancel: () => void
 }
 
@@ -128,42 +130,33 @@ function Carousel({ align = 'center', navigation = true, pagination = true, labe
     [width]
   )
 
-  
   const runSprings = ({
     active,
-    movement,
-    direction,
-    distance,
+    movement: [movmentX],
+    direction: [directionX],
+    distance: [distanceX],
     cancel,
-  }: any) => {
-    // Destructure movement, direction, and distance from the state object
-    const { x: movementX, y: movementY } = movement;
-    const { x: directionX, y: directionY } = direction;
-    const { x: distanceX, y: distanceY } = distance;
-  
-    // Handle logic when drag is active and threshold is reached
+  }: RunSpringsProps) => {
     if (active && distanceX > width * 0.5) {
-      page.current = clamp(context.currentPage + (directionX > 0 ? -1 : 1), 0, items.length - 1);
-      context.setCurrentPage(page.current);
-      cancel(); // Call cancel to stop the gesture
+      page.current = clamp(context.currentPage + (directionX > 0 ? -1 : 1), 0, items.length - 1)
+      context.setCurrentPage(page.current)
+      cancel()
     }
-  
-    setAltText(items[page.current].alt); // Update alternative text for the current page
-  
-    // Start the spring animation
-    api.start((index) => {
-      const x = (index - page.current) * width + (active ? movementX : 0);
-      const scale = page.current === index ? (active ? 1 - (distanceX / width) * 0.5 : 1) : 0.75;
+    setAltText(items[page.current].alt)
+    api.start(index => {
+      // Hide offscreen pages for better perfomance
+      // if (index < currentPage - 2 || index > currentPage + 2) return { display: 'none' }
+      // Update transforms based on drag distance
+      const x = (index - page.current) * width + (active ? movmentX : 0)
+      const scale = page.current === index ? (active ? 1 - (distanceX / width) * 0.5 : 1) : 0.75
       return {
         x,
         scale,
         display: 'block',
-      };
-    });
-  };
-  
-  
-  
+      }
+    })
+  }
+
   context.NavigationRef = (direction: number) => {
     page.current = clamp(context.currentPage + (direction > 0 ? -1 : 1), 0, items.length - 1)
     context.setCurrentPage(page.current)
@@ -204,7 +197,7 @@ function Carousel({ align = 'center', navigation = true, pagination = true, labe
   useHotkeys('arrowLeft', () => context.NavigationRef(1), { enabled: hotkeysEnabled || focused })
 
   const bind = useGesture({
-    onDrag: (state) =>  runSprings(state),
+    onDrag: state => runSprings(state),
     onDragStart: () => {
       setDragging(true)
     },
@@ -227,7 +220,13 @@ function Carousel({ align = 'center', navigation = true, pagination = true, labe
             style={{ display, x }}>
             <animated.div style={{ scale }}>
               <div className={styles.carouselContent}>
-                <img src={items[i].image} alt={items[i].alt} />
+                <div className={`${styles.tile_container} bg-[{items[i].color}]`}>
+                  <h1 className={styles.tile_header}>{items[i].name}</h1>
+                  <br/>
+                  <p className='text-black'>bg-[{items[i].color}]</p>
+                  <p className={styles.tile_description}>{items[i].description}</p>
+                </div>
+                {/* <img src={items[i].image} alt={items[i].alt} /> */}
               </div>
             </animated.div>
           </animated.div>
@@ -236,7 +235,7 @@ function Carousel({ align = 'center', navigation = true, pagination = true, labe
       <div role="region" aria-live="polite" className={styles['visually-hidden']}>
         {altText}
       </div>
-      {pagination && <Pagination label={label} />}
+      {/* {pagination && <Pagination label={label} />} */}
       {navigation && <Navigation label={label} />}
     </div>
   )
