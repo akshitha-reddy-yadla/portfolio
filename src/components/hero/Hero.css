@@ -1,0 +1,51 @@
+.svg {
+    width: 350px;
+}
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* .hero-section {
+    background-color: #282c34;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-family: 'Arial', sans-serif;
+  } */
+  
+  /* .hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  } */
+  
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+  
+  .hero-content .name {
+    font-weight: bold;
+    color: #61dafb; /* Blue color for the name */
+  }
+  
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2rem;
+    }
+  
+    .hero-content h2 {
+      font-size: 1.5rem;
+    }
+  }
+  
+
+/* .container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+} */
