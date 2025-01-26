@@ -4,6 +4,21 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: 'relative';
+        z-index: 1;
 }
 
-@media screen and (min-width: 520px) {}
+.card {
+    margin: 30px;
+}
+
+@media screen and (min-width: 720px) {
+    .services_section {
+        flex-direction: row;
+    }
+
+    .card {
+        margin: 30px;
+    }
+
+}

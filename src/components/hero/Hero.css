@@ -30,14 +30,15 @@
 
 @media screen and (min-width: 720px) {
   .hero-content {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
   }
 
   .name {
-    font-size: 2.4rem;
+    font-size: 2.8rem;
   }
 
   .hero-description {
     margin-top: 12px;
+    width: 50vw;
   }
 }

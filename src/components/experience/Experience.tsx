@@ -5,9 +5,7 @@ import '../../core/styles.css'
 export default function Experience() {
   return (
     <div className='section'>
-      <Card>
-        <div className='content'>Experience</div>
-      </Card>
+      <div className='section_header'>Experience</div>
     </div>
   )
 }

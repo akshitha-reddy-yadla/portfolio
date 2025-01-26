@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useScroll, animated, useSpring } from '@react-spring/web'
 
-import  './App.scss';
+import './App.scss';
 import Hero from './components/hero/Hero';
 import Services from './components/services/Services';
 import Experience from './components/experience/Experience';
@@ -91,21 +91,57 @@ export default function App() {
       </div>
       {new Array(PAGE_COUNT).fill(null).map((_, index) => {
         if (index === 0) {
-          return <div className='full__page'><Hero key={index} /></div>;
+          return <div className='full__page'>
+            <div className='section__container' style={{
+              position: 'relative',
+              zIndex: 1,
+            }}>
+              <Hero key={index} />
+            </div>
+          </div>;
         } else if (index === 1) {
-          return <div className='full__page'><Services key={index} /></div>;
+          return <div className='full__page' style={{
+          }}>
+            <div className='section__container' style={{
+              position: 'relative',
+              zIndex: 1,
+            }}>
+              <Services key={index} />
+            </div>
+          </div>;
         } else if (index === 2) {
-          return <div className='full__page'><Experience key={index} /></div>;
+          return <div className='full__page'>
+            <div className='section__container' style={{
+              position: 'relative',
+              zIndex: 1,
+            }}>
+              <Experience key={index} />
+            </div>
+          </div>;
         } else if (index === 3) {
-          return <div className='full__page'><Projects key={index} /></div>;
+          return <div className='full__page'>
+            {/* <div className='section__container' style={{
+              position: 'relative',
+              zIndex: 1,
+            }}> */}
+            <Projects key={index} />
+            {/* </div> */}
+          </div>;
         } else if (index === 4) {
-          return <div className='full__page'><Skills key={index} /></div>;
+          return <div className='full__page'>
+            <div className='section__container' style={{
+              position: 'relative',
+              zIndex: 1,
+            }}>
+              <Skills key={index} />
+            </div>
+          </div>;
         } else if (index === 5) {
           return <div className='full__page'><Contact key={index} /></div>;
         } else {
           return <div className='full__page'><DefaultComponent key={index} /></div>;
         }
-        })}
+      })}
 
     </div>
   )
