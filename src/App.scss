@@ -1,19 +1,24 @@
 .body {
-  background-color: white;
+  background-color: #ebebeb;
   /* background-color: #171717; */
   height: 100%;
   width: 100%;
   overflow-y: scroll;
+  // position: relative;
 }
 
 .body::-webkit-scrollbar {
   display: none;
 }
 
+.content {
+  background-color: yellow;
+}
 .full__page {
   width: 100vw;
   height: 100vh;
-  // background-color: aliceblue;
+  z-index: 100;
+    background-color: transparent;
   border: 1px solid blue;
 }
 
@@ -68,6 +73,7 @@
   background-color: #eb5b3d;
   top: 50%;
   left: 50%;
+  z-index: 1;
   transform: translate(-50%, -50%);
 }
 

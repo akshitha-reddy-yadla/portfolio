@@ -9,7 +9,6 @@ export default function Projects() {
       key: uuidv4(),
       content: <CardNews
         title={"CrimeScene Atlas"}
-        heading={"Single page react application"}
         link={"https://github.com/AkshithaReddy1899/psycho-search"}
         description={"Explore infamous psychopaths from history on our interactive map, featuring a clickable list for easy exploration and locations associated with their crimes and exploits. Built as a seamless single-page application with React."} />
     },

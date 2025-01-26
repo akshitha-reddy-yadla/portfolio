@@ -12,7 +12,6 @@ import { useBouncyShadowStyles } from "@mui-treasury/styles/shadow/bouncy";
 
 interface ContentCardDemoProps {
     title: string;
-    heading: string;
     link: string;
     description: string;
 }
@@ -34,7 +33,7 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-export const ContentCardDemo: React.FC<ContentCardDemoProps> = React.memo(({ title, heading, link, description }) => {
+export const ContentCardDemo: React.FC<ContentCardDemoProps> = React.memo(({ title, link, description }) => {
     const styles = useStyles();
     const mediaStyles = useWideCardMediaStyles();
     const textCardContentStyles = useN01TextInfoContentStyles();

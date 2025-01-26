@@ -89,11 +89,9 @@ export default function App() {
           </h1>
         </animated.div>
       </div>
-      {/* <div  style={{ padding: '20px', backgroundColor: '#f0f0f0' }} > */}
       {new Array(PAGE_COUNT).fill(null).map((_, index) => {
         if (index === 0) {
-          // return <div>wer</div>
-          return <Hero key={index} />
+          return <div className='full__page'><Hero key={index} /></div>;
         } else if (index === 1) {
           return <div className='full__page'><Services key={index} /></div>;
         } else if (index === 2) {
@@ -109,7 +107,6 @@ export default function App() {
         }
         })}
 
-      {/* </div> */}
     </div>
   )
 }

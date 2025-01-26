@@ -26,14 +26,15 @@ body {
   color: #fff;
 }
 
-.app {
+.App {
+  background-color: pink;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   min-height: 100vh;
 }
 
-/* Carousel styles */
+Carousel styles
 
 .carouselWrapper {
   width: 100vw;
