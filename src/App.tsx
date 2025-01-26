@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useScroll, animated, useSpring } from '@react-spring/web'
 
 import  './App.scss';
-import { Hero } from './components/hero/Hero';
+import Hero from './components/hero/Hero';
 import Services from './components/services/Services';
 import Experience from './components/experience/Experience';
 import Projects from './components/projects/Projects';
@@ -92,7 +92,8 @@ export default function App() {
       {/* <div  style={{ padding: '20px', backgroundColor: '#f0f0f0' }} > */}
       {new Array(PAGE_COUNT).fill(null).map((_, index) => {
         if (index === 0) {
-          return <Projects key={index} />;
+          // return <div>wer</div>
+          return <Hero key={index} />
         } else if (index === 1) {
           return <div className='full__page'><Services key={index} /></div>;
         } else if (index === 2) {

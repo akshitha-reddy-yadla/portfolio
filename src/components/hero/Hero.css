@@ -1,51 +1,56 @@
-.svg {
-    width: 350px;
+.hero-content {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ebebeb;
+  color: #1d1d1d;
+  padding: 0 30px;
+  font-family: 'Courier New', Courier, monospace;
 }
-/* Basic reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* .hero-section {
-    background-color: #282c34;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    font-family: 'Arial', sans-serif;
-  } */
-  
-  /* .hero-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-  } */
-  
-  .hero-content h2 {
-    font-size: 2rem;
-  }
-  
-  .hero-content .name {
-    font-weight: bold;
-    color: #61dafb; /* Blue color for the name */
-  }
-  
-  @media (max-width: 768px) {
-    .hero-content h1 {
-      font-size: 2rem;
-    }
-  
-    .hero-content h2 {
-      font-size: 1.5rem;
-    }
-  }
-  
 
-/* .container {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    justify-content: center;
-} */
+.hero-header {
+  text-align: center;
+}
+
+.name {
+  margin: 0 10px;
+  color: #2356a6;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.hero-description {
+  padding: 0 5px;
+  text-align: center;
+}
+
+.color {
+  background-color: #ebebeb;
+  background-color: #da2f1b;
+  background-color: #f5ac18;
+  background-color: #2356a6;
+  background-color: #eb5b3d;
+  background-color: #ffebf9;
+  background-color: #ffcaca;
+  background-color: #1ba8ab;
+  background-color: #eae34c;
+  background-color: #1d1d1d;
+}
+
+@media screen and (min-width: 720px) {
+  .hero-content {
+    font-size: 1.2rem;
+  }
+
+  .name {
+    font-size: 2.4rem;
+  }
+
+  .hero-description {
+    margin-top: 12px;
+  }
+}
