@@ -1,263 +1,60 @@
-/*
-  Notes
-  - All slides must be the same size, set with aspect ratio
-*/
-
-import styles from './projects.module.css'
-
-import React, { useRef, useState, useEffect, useCallback, createContext, useContext, RefObject } from 'react'
-import { useSprings, animated } from '@react-spring/web'
-import { createUseGesture, dragAction, hoverAction } from '@use-gesture/react'
-import useMeasure from 'react-use-measure'
-import { useHotkeys } from 'react-hotkeys-hook'
-import { useFocusWithin } from '../../util/useFocusWithin'
-import clamp from 'lodash.clamp'
-import classNames from 'classnames'
-
-import { data as items } from './data'
-
-const useGesture = createUseGesture([dragAction, hoverAction])
-
-type CarouselContextType = {
-  NavigationRef: any
-  PaginationRef: any
-  totalPages: number
-  currentPage: number
-  setCurrentPage: (index: number) => void
-}
-
-const CarouselContext = createContext<CarouselContextType>({} as CarouselContextType)
-
-type CarouselProps = {
-  align?: 'left' | 'center'
-  navigation?: boolean
-  pagination?: boolean
-  label?: string
-}
-
-type NavigationProps = {
-  label?: string
-}
-
-type PaginationProps = {
-  label?: string
-}
-
-type RunSpringsProps = {
-  active: boolean
-  movement: [number]
-  direction: [number]
-  distance: [number]
-  cancel: () => void
-}
-
-function Navigation({ label }: NavigationProps) {
-  const context = useContext(CarouselContext)
-  return (
-    <div className={styles.navigation}>
-      <button
-        className={styles.prev}
-        onClick={() => context.NavigationRef(1)}
-        aira-label={label ? `${label}: go to previous slide` : 'Go to previous slide'}
-        title={label ? `${label}: go to previous slide` : 'Go to previous slide'}
-        disabled={context.currentPage <= 0}>
-        <svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="64" cy="64" r="64" fill="white" />
-          <path
-            d="M30 68.25L81.6371 68.25L57.8367 92.0504L64 98L98 64L64 30L58.0506 35.9498L81.6371 59.75L30 59.75L30 68.25Z"
-            fill="black"
-          />
-        </svg>
-      </button>
-      <button
-        className={styles.next}
-        onClick={() => context.NavigationRef(-1)}
-        aira-label={label ? `${label}: go to next slide` : 'Go to next slide'}
-        title={label ? `${label}: go to next slide` : 'Go to next slide'}
-        disabled={context.currentPage >= context.totalPages - 1}>
-        <svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="64" cy="64" r="64" fill="white" />
-          <path
-            d="M30 68.25L81.6371 68.25L57.8367 92.0504L64 98L98 64L64 30L58.0506 35.9498L81.6371 59.75L30 59.75L30 68.25Z"
-            fill="black"
-          />
-        </svg>
-      </button>
-    </div>
-  )
-}
-
-function Pagination({ label }: PaginationProps) {
-  const context = useContext(CarouselContext)
-  return (
-    <div className={styles.pagination}>
-      <ul>
-        {items.map((item: any, index: number) => (
-          <li key={index}>
-            <button
-              className={classNames([context.currentPage === index && styles.active])}
-              onClick={() => context.PaginationRef(index)}
-              aira-label={label ? `${label}: go to slide ${item.id}` : `Go to slide ${item.id}`}
-              title={label ? `${label}: go to slide ${item.id}` : `Go to slide ${item.id}`}>
-              <span></span>
-              {/* {item.id} */}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}
-
-function Carousel({ align = 'center', navigation = true, pagination = true, label }: CarouselProps) {
-  const context = useContext(CarouselContext)
-  const page = useRef(0)
-  const [hotkeysEnabled, setHotkeysEnabled] = useState(false)
-  const [dragging, setDragging] = useState(false)
-  const [altText, setAltText] = useState('')
-  const [carouselRef, { width }] = useMeasure()
-  const { ref: wrapperRef, focused } = useFocusWithin()
-
-  // Sets the initial position and scale of the items
-  const [springs, api] = useSprings(
-    items.length,
-    index => ({
-      x: (index - context.currentPage) * width,
-      scale: index - context.currentPage === 0 ? 1 : 0.75,
-      display: 'block',
-      immediate: true,
-    }),
-    [width]
-  )
-
-  const runSprings = ({
-    active,
-    movement: [movmentX],
-    direction: [directionX],
-    distance: [distanceX],
-    cancel,
-  }: RunSpringsProps) => {
-    if (active && distanceX > width * 0.5) {
-      page.current = clamp(context.currentPage + (directionX > 0 ? -1 : 1), 0, items.length - 1)
-      context.setCurrentPage(page.current)
-      cancel()
-    }
-    setAltText(items[page.current].alt)
-    api.start(index => {
-      // Hide offscreen pages for better perfomance
-      // if (index < currentPage - 2 || index > currentPage + 2) return { display: 'none' }
-      // Update transforms based on drag distance
-      const x = (index - page.current) * width + (active ? movmentX : 0)
-      const scale = page.current === index ? (active ? 1 - (distanceX / width) * 0.5 : 1) : 0.75
-      return {
-        x,
-        scale,
-        display: 'block',
-      }
-    })
-  }
-
-  context.NavigationRef = (direction: number) => {
-    page.current = clamp(context.currentPage + (direction > 0 ? -1 : 1), 0, items.length - 1)
-    context.setCurrentPage(page.current)
-
-    setAltText(items[page.current].alt)
-
-    api.start(index => {
-      //  Hide offscreen pages for better perfomance
-      // if (index < currentPage - 2 || index > currentPage + 2) return { display: 'none' }
-      const x = (index - page.current) * width
-      const scale = index === page.current ? 1 : 0.75
-      return {
-        x,
-        scale,
-        display: 'block',
-      }
-    })
-  }
-
-  context.PaginationRef = (index: number) => {
-    page.current = index
-    context.setCurrentPage(page.current)
-
-    setAltText(items[page.current].alt)
-
-    api.start(index => {
-      const x = (index - page.current) * width
-      const scale = index === page.current ? 1 : 0.75
-      return {
-        x,
-        scale,
-        display: 'block',
-      }
-    })
-  }
-
-  useHotkeys('arrowRight', () => context.NavigationRef(-1), { enabled: hotkeysEnabled || focused })
-  useHotkeys('arrowLeft', () => context.NavigationRef(1), { enabled: hotkeysEnabled || focused })
-
-  const bind = useGesture({
-    onDrag: state => runSprings(state),
-    onDragStart: () => {
-      setDragging(true)
-    },
-    onDragEnd: () => {
-      setDragging(false)
-    },
-    onHover: state => {
-      setHotkeysEnabled(state.active)
-    },
-  })
-
-  return (
-    <div className={styles.carouselWrapper} data-align={align} ref={wrapperRef}>
-      <div ref={carouselRef} className={styles.carouselRef}>
-        {springs.map(({ x, display, scale }, i) => (
-          <animated.div
-            key={i}
-            {...bind()}
-            className={classNames([styles.carouselItem, styles[dragging ? 'dragging' : '']])}
-            style={{ display, x }}>
-            <animated.div style={{ scale }}>
-              <div className={styles.carouselContent}>
-                <div className={`${styles.tile_container} bg-[{items[i].color}]`}>
-                  <h1 className={styles.tile_header}>{items[i].name}</h1>
-                  <br/>
-                  <p className='text-black'>bg-[{items[i].color}]</p>
-                  <p className={styles.tile_description}>{items[i].description}</p>
-                </div>
-                {/* <img src={items[i].image} alt={items[i].alt} /> */}
-              </div>
-            </animated.div>
-          </animated.div>
-        ))}
-      </div>
-      <div role="region" aria-live="polite" className={styles['visually-hidden']}>
-        {altText}
-      </div>
-      {/* {pagination && <Pagination label={label} />} */}
-      {navigation && <Navigation label={label} />}
-    </div>
-  )
-}
+import { v4 as uuidv4 } from "uuid";
+import CardNews from "./components/CardContent";
+import CarouselComponent from "./components/CarouselComponent";
+import React from "react";
 
 export default function Projects() {
-  const NavigationRef = useRef(null)
-  const PaginationRef = useRef(null)
-  const [currentPage, setCurrentPage] = useState(0)
+  let cards = [
+    {
+      key: uuidv4(),
+      content: <CardNews
+        title={"CrimeScene Atlas"}
+        heading={"Single page react application"}
+        link={"https://github.com/AkshithaReddy1899/psycho-search"}
+        description={"Explore infamous psychopaths from history on our interactive map, featuring a clickable list for easy exploration and locations associated with their crimes and exploits. Built as a seamless single-page application with React."} />
+    },
+    {
+      key: uuidv4(),
+      content: <CardNews
+        title={"Budget App"}
+        description={"Stay on top of your finances with our Budget app, a comprehensive full-stack application built with Ruby. Easily track your daily expenses across multiple categories, gaining valuable insights into your spending habits and helping you make informed decisions about your financial future."}
+        link={"https://github.com/AkshithaReddy1899/Budget-app"}
+      />
+    },
+    {
+      key: uuidv4(),
+      content: <CardNews title={"Menu App"}
+        description={"This innovative digital menu app is designed to cater to the needs of both partners and customers. Built with Flutter, this robust platform utilizes a single codebase to power both the mobile app and responsive web application, enabling effortless menu updates and hassle-free payments."} link={"https://github.com/AkshithaReddy1899/digital_menu"}
+      />
 
+    },
+    {
+      key: uuidv4(),
+      content: <CardNews title={"Relational Migration"}
+        description={"This project involves migrating data from an SQL database to a NoSQL system. It includes adapting the data structure, ensuring consistency, and optimizing performance for the new system. The goal is to ensure a smooth transition while maintaining data integrity and functionality."}
+        link={""}
+      />
+
+    },
+    {
+      key: uuidv4(),
+      content: <CardNews title={"Productivity App"}
+        description={"A cutting-edge productivity mobile app, built with Flutter, harnesses the power of native features to help you stay focused. Track your screen time and app usage with precision, and block distracting apps to stay on track."}
+        link={"https://github.com/akshitha-reddy-yadla/focus"}
+      />
+
+    }
+  ];
   return (
-    <div className={styles.app}>
-      <CarouselContext.Provider
-        value={{
-          NavigationRef: NavigationRef,
-          PaginationRef: PaginationRef,
-          totalPages: items.length,
-          currentPage: currentPage,
-          setCurrentPage: setCurrentPage,
-        }}>
-        <Carousel align="center" label="Primary carousel" />
-      </CarouselContext.Provider>
+    <div className="App">
+      <CarouselComponent
+        cards={cards}
+        height="500px"
+        width="90%"
+        margin="0 auto"
+        offset={2}
+        showArrows={false}
+      />
     </div>
-  )
+  );
 }
