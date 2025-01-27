@@ -1,10 +1,8 @@
 .body {
   background-color: #ebebeb;
-  /* background-color: #171717; */
   height: 100%;
   width: 100%;
   overflow-y: scroll;
-  // position: relative;
 }
 
 .body::-webkit-scrollbar {
@@ -152,8 +150,6 @@
   color: #ebebeb;
 }
 
-// m-2 p-2 bg-emerald-600 text-white font-bold leading-normal uppercase rounded shadow-md hover:bg-emerald-700 hover:shadow-lg focus:bg-emerald-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-emerald-800 active:shadow-lg transition duration-150 ease-in-out items-center text-sm
-
 @media screen and (min-width: 720px) {
   
   .title {
@@ -173,5 +169,3 @@
     width: 400px;
   }
 }
-
-// orm-control block w-full px-3 py-1.5 text-base font-normaltext-emerald-400 bg-inherit bg-clip-padding border-b border-solid border-green-300 transition ease-in-out m-4 focus:text-emerald-400 focus:bg-inhert focus:border-green-600 focus:outline-none

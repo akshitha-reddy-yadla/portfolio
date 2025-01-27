@@ -16,7 +16,7 @@ import { log } from 'console';
 
 const X_LINES = 30
 
-const PAGE_COUNT = 7
+const PAGE_COUNT = 8
 
 const INITIAL_WIDTH = 10
 
@@ -61,11 +61,6 @@ export default function App() {
   
     const sendMail = (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-
-      console.log(import.meta.env.VITE_SERVICE_ID);
-      console.log(import.meta.env.VITE_TEMPLATE_ID);
-      console.log(import.meta.env.VITE_PUBLIC_KEY);
-
       emailjs
       .sendForm(
         import.meta.env.VITE_SERVICE_ID,
@@ -222,7 +217,7 @@ export default function App() {
             <div style={{ borderBottom: '1px dotted black', margin: '20px 0' }}></div>
           </div>;
         } else if (index === 4) {
-          return <div className='full__page'>
+          return <div className=''>
             <div className='section__container' style={{
               position: 'relative',
               zIndex: 1,

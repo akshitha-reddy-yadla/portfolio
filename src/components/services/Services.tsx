@@ -18,18 +18,7 @@ const data = [
         id: 1,
         name: "JavaScript",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-      },
-      // {
-      //   id: 2,
-      //   name: "React",
-      //   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
-      // },
-      // {
-      //   id: 2,
-      //   name: "Vue",
-      //   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg"
-      // }
-      
+      }, 
     ],
   },
   {
@@ -46,26 +35,11 @@ const data = [
         name: "JavaScript",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
       },
-      // {
-      //   id: 2,
-      //   name: "Rails",
-      //   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rails/rails-plain-wordmark.svg"
-      // },
-      // {
-      //   id: 3,
-      //   name: "nodejs",
-      //   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg"
-      // },
       {
         id: 3,
         name: "Java",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
       },
-      // {
-      //   id: 5,
-      //   name: "Spring",
-      //   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg"
-      // },
     ],
     description: "I build reliable back-end systems that power apps, focusing on speed, security, and efficiency",
   },
@@ -78,13 +52,8 @@ const data = [
         name: "Dart",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg"
       },
-      // {
-      //   id: 2,
-      //   name: "Flutter",
-      //   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg"
-      // },
       {
-        id: 3,
+        id: 2,
         name: "Kotlin",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg"
       },
@@ -105,7 +74,7 @@ const bull = (
 const theme = createTheme({
   palette: {
     background: {
-      paper: '#ffcaca', // your color
+      paper: '#ffcaca',
     },
   },
   typography: {
@@ -149,10 +118,8 @@ export default function Services() {
                 <Grid container spacing={2}>
                   {item.icons?.map((icon) => (
                     <Grid item key={icon.id}>
-                      {/* <IconButton> */}
-                      <img src={icon.icon} alt={icon.name} style={{ width: 40, height: 40 }} />
-                      {/* </IconButton> */}
-                      <Typography variant="body2" align="center">
+                     <img src={icon.icon} alt={icon.name} style={{ width: 40, height: 40 }} />
+                     <Typography variant="body2" align="center">
                         {icon.name}
                       </Typography>
                     </Grid>

@@ -1,12 +1,3 @@
-// import React from 'react'
-
-// export default function Contact() {
-//   return (
-//     <div>Contact</div>
-//   )
-// }
-
-
 import React, { FormEvent, useState } from 'react';
 import { send } from 'emailjs-com';
 
