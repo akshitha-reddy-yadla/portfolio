@@ -9,6 +9,10 @@ import Projects from './components/projects/Projects';
 import Skills from './components/skills/Skills';
 import Contact from './components/contact/Contact';
 import DefaultComponent from './components/default/DefaultComponent';
+import { FormEvent, useState } from 'react';
+import emailjs from 'emailjs-com';
+import { log } from 'console';
+
 
 const X_LINES = 30
 
@@ -21,6 +25,7 @@ export default function App() {
   const barContainerRef = React.useRef<HTMLDivElement>(null!)
 
   const [textStyles, textApi] = useSpring(() => ({
+    pointerEvents: 'auto', // Ensure pointer events are enabled
     y: '100%',
   }))
 
@@ -37,6 +42,51 @@ export default function App() {
       immediate: true,
     },
   })
+
+    const [senderName, setSenderName] = useState('');
+    const [senderEmail, setSenderEmail] = useState('');
+    const [message, setMessage] = useState('');
+  
+    function validateForm(e: FormEvent<HTMLFormElement>) {
+      e.preventDefault();
+
+      if (senderName == "" && senderEmail == "" && message == "") {
+        alert("All fields must be filled out");
+        return false;
+      }else {
+        sendMail(e);
+      }
+    
+    }
+  
+    const sendMail = (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+
+      console.log(import.meta.env.VITE_SERVICE_ID);
+      console.log(import.meta.env.VITE_TEMPLATE_ID);
+      console.log(import.meta.env.VITE_PUBLIC_KEY);
+
+      emailjs
+      .sendForm(
+        import.meta.env.VITE_SERVICE_ID,
+        import.meta.env.VITE_TEMPLATE_ID,
+        e.target as HTMLFormElement,
+        import.meta.env.VITE_PUBLIC_KEY).then(() => {
+          const div = document.getElementById('sent');
+          if (div !== null) {
+          div.textContent = 'Message sent successfully :)';
+          setSenderName('');
+          setSenderEmail('');
+          setMessage('');
+          }
+        })
+        .catch(() => {
+          const div = document.getElementById('error');
+          if (div !== null) {
+          div.textContent = 'OOPS! Unknown error occured. Try again later :(';
+          }
+        });
+    };
 
   return (
     <div ref={containerRef} className="body">
@@ -80,11 +130,51 @@ export default function App() {
             <span className='text-xxl'>
               <animated.span style={textStyles}>Aha!</animated.span>
             </span>
-            <span className='text-xl'>
+            <span className='text-base'>
               <animated.span style={textStyles}>Let's talk</animated.span>
             </span>
-            <span className='text-sm'>
-              <animated.span style={textStyles}>Please drop your details below, and i will get back to you </animated.span>
+            <span className='text-base'>
+              <animated.span style={textStyles}>Please drop your details below, and I will get back to you </animated.span>
+            </span>
+            <span className='text-base'>
+              <br />
+              <animated.form className="form" onSubmit={validateForm} style={textStyles}>
+              <p>
+                <span className="success" id="sent">&nbsp;</span>
+                <br/>
+                <span className="error" id="error">&nbsp;</span>
+              </p>
+                <animated.input
+                  style={textStyles}
+                  type="text"
+                  name="sender_name"
+                  value={senderName}
+                  onChange={(e) => {setSenderName(e.target.value)}}
+                  required
+                  placeholder="your name"
+                  className="form__input"/>
+                <animated.input
+                style={textStyles}
+                type="email"
+                name="sender_email"
+                value={senderEmail}
+                onChange={(e) => {setSenderEmail(e.target.value)}}
+                required
+                placeholder="your_email@gmail.com"
+                className="form__input" />
+                <animated.textarea
+                style={textStyles} 
+                name="message" 
+                value={message} 
+                placeholder="your message" 
+                onChange={(e) => {setMessage(e.target.value)}} 
+                required
+                className="form__input" />
+                <animated.button
+                style={textStyles}
+                type="submit"
+                className="form__button">Send message</animated.button>
+            </animated.form>
             </span>
           </h1>
         </animated.div>
@@ -98,9 +188,10 @@ export default function App() {
             }}>
               <Hero key={index} />
             </div>
+            <div style={{ borderBottom: '1px dotted black', margin: '20px 0' }}></div>
           </div>;
         } else if (index === 1) {
-          return <div className='full__page' style={{
+          return <div className='md__full_page' style={{
           }}>
             <div className='section__container' style={{
               position: 'relative',
@@ -108,24 +199,27 @@ export default function App() {
             }}>
               <Services key={index} />
             </div>
+            <div style={{ borderBottom: '1px dotted black', margin: '20px 0' }}></div>
           </div>;
         } else if (index === 2) {
-          return <div className='full__page'>
+          return <div className=''>
             <div className='section__container' style={{
               position: 'relative',
               zIndex: 1,
             }}>
               <Experience key={index} />
             </div>
+            <div style={{ borderBottom: '1px dotted black', margin: '20px 0' }}></div>
           </div>;
         } else if (index === 3) {
           return <div className='full__page'>
-            {/* <div className='section__container' style={{
+            <div className='section__container' style={{
               position: 'relative',
               zIndex: 1,
-            }}> */}
+            }}>
             <Projects key={index} />
-            {/* </div> */}
+            </div>
+            <div style={{ borderBottom: '1px dotted black', margin: '20px 0' }}></div>
           </div>;
         } else if (index === 4) {
           return <div className='full__page'>
@@ -135,6 +229,7 @@ export default function App() {
             }}>
               <Skills key={index} />
             </div>
+            <div style={{ borderBottom: '1px dotted black', margin: '20px 0' }}></div>
           </div>;
         } else if (index === 5) {
           return <div className='full__page'><Contact key={index} /></div>;

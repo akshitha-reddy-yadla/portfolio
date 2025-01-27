@@ -8,7 +8,7 @@
     flex-direction: column;
     background-color: transparent;
     color: #1d1d1d;
-    padding: 0 30px;
+    padding: 0 50px;
     font-family: 'Courier New', Courier, monospace;
 }
 
@@ -16,4 +16,30 @@
     margin: 40px auto;
     font-size: 1.4rem;
     font-weight: 700;
+}
+
+.text {
+    color: #1d1d1d;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.separator {
+    height: 1px;
+    background-color: #1ba8ab;
+    border: none;
+}
+
+
+@media screen and (min-width: 920px) {
+
+    .md__full_page {
+        width: 100vw;
+        height: 80vh;
+    }
+
+    .section {
+        justify-content: start;
+        align-items: center;
+    }
+    
 }

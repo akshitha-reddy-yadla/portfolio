@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import CardNews from "./components/CardContent";
 import CarouselComponent from "./components/CarouselComponent";
 import React from "react";
+import '../../core/styles.css'
 
 export default function Projects() {
   let cards = [
@@ -45,7 +46,8 @@ export default function Projects() {
     }
   ];
   return (
-    <div className="App">
+    <div className="section">
+      <div className='section_header'>Projects</div>
       <CarouselComponent
         cards={cards}
         height="500px"

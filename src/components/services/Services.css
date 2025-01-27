@@ -5,15 +5,29 @@
     align-items: center;
     flex-direction: column;
     position: 'relative';
-        z-index: 1;
+    z-index: 1;
 }
 
 .card {
     margin: 30px;
 }
 
-@media screen and (min-width: 720px) {
+.card_container {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    padding: 20px;
+}
+
+@media screen and (min-width: 960px) {
+    .section_header {
+        padding-bottom: 50px;
+    }
+
     .services_section {
+        justify-content: space-between;
+        align-items: center;
         flex-direction: row;
     }
 

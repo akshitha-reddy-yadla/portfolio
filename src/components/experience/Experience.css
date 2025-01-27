@@ -1,0 +1,21 @@
+.experience__section {
+    width: 100vw;
+    margin: 30px 5px 40px 5px;
+    padding: 40px;
+}
+
+.experience__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (min-width: 720px) {
+
+    .experience__content {
+        width: 50vw;
+    }
+
+    
+}

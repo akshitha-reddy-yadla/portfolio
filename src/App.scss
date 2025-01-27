@@ -18,8 +18,8 @@
   width: 100vw;
   height: 100vh;
   z-index: 100;
-  background-color: transparent;
-  border: 1px solid blue;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .bar__container {
@@ -48,8 +48,7 @@
 
 .bar {
   height: 1vh;
-  background-color: pink;
-  // background-color: rgba(255, 255, 255, 0.4); 
+  background-color: #f5ac18;
 }
 
 .animated__layers {
@@ -78,7 +77,9 @@
 }
 
 .title {
-  color: rgb(5, 74, 238);
+  padding-top: 50px;
+  margin: 10px;
+  color: #2356a6;
   font-size: 8vw;
   padding-left: 8vw;
 
@@ -87,6 +88,15 @@
     overflow: hidden;
 
     &>span {
+      display: block;
+    }
+  }
+
+  &>form {
+    display: block;
+    overflow: hidden;
+
+    &>form {
       display: block;
     }
   }
@@ -99,3 +109,69 @@
   position: 'relative';
   z-index: 1;
 }
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form__input {
+  width: 80%;
+  padding: 10px;
+  margin: 20px;
+  background-color: transparent;
+  color: #eae34c;
+  border-bottom: 1px solid #eae34c;
+}
+
+.form__input::placeholder {
+  color: #f5ac18;
+  opacity: 1;
+}
+
+.form__input:focus {
+  outline: none;
+  border-bottom: 1px solid #f5ac18;
+}
+
+.form__button {
+  width: 80%;
+  margin: 10px;
+  padding: 10px;
+  background-color: #eae34c;
+  color: #eb5b3d;
+}
+
+.success {
+  color: #ebebeb;
+}
+
+.error {
+  color: #ebebeb;
+}
+
+// m-2 p-2 bg-emerald-600 text-white font-bold leading-normal uppercase rounded shadow-md hover:bg-emerald-700 hover:shadow-lg focus:bg-emerald-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-emerald-800 active:shadow-lg transition duration-150 ease-in-out items-center text-sm
+
+@media screen and (min-width: 720px) {
+  
+  .title {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .form__input {
+    width: 400px;
+  }
+
+  .form__button {
+    width: 400px;
+  }
+}
+
+// orm-control block w-full px-3 py-1.5 text-base font-normaltext-emerald-400 bg-inherit bg-clip-padding border-b border-solid border-green-300 transition ease-in-out m-4 focus:text-emerald-400 focus:bg-inhert focus:border-green-600 focus:outline-none
