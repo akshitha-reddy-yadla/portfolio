@@ -74,7 +74,7 @@ const bull = (
 const theme = createTheme({
   palette: {
     background: {
-      paper: '#ffcaca',
+        paper: "rgb(181, 181, 181)"
     },
   },
   typography: {
