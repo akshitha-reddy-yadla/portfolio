@@ -11,11 +11,25 @@
     align-items: center;
 }
 
+.exp__name {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.exp__year {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.exp__description {
+    font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 @media screen and (min-width: 720px) {
 
     .experience__content {
         width: 50vw;
     }
 
-    
+
 }

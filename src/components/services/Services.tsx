@@ -1,8 +1,7 @@
 import React from 'react'
 import Box from '@mui/material/Box';
 import { Card, CardContent, CardMedia, Typography, Grid, createTheme, ThemeProvider } from '@mui/material';
-import CardActions from '@mui/material/CardActions';
-import Button from '@mui/material/Button';
+import { v4 as uuidv4 } from "uuid";
 import './Services.css';
 import '../../core/styles.css';
 import { AlignHorizontalLeft } from '@mui/icons-material';
@@ -10,7 +9,7 @@ import { AlignHorizontalLeft } from '@mui/icons-material';
 
 const data = [
   {
-    id: 1,
+    id: uuidv4(),
     name: "Front-end development",
     description: "I love creating responsive websites that provide the best user experience, making sure everything looks great and works seamlessly across all devices",
     icons: [
@@ -22,21 +21,21 @@ const data = [
     ],
   },
   {
-    id: 2,
+    id: uuidv4(),
     name: "Back-end development",
     icons: [
       {
-        id: 1,
+        id: uuidv4(),
         name: "Ruby",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ruby/ruby-original.svg"
       },
       {
-        id: 2,
+        id: uuidv4(),
         name: "JavaScript",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
       },
       {
-        id: 3,
+        id: uuidv4(),
         name: "Java",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
       },
@@ -44,16 +43,16 @@ const data = [
     description: "I build reliable back-end systems that power apps, focusing on speed, security, and efficiency",
   },
   {
-    id: 3,
+    id: uuidv4(),
     name: "Android development",
     icons: [
       {
-        id: 1,
+        id: uuidv4(),
         name: "Dart",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg"
       },
       {
-        id: 2,
+        id: uuidv4(),
         name: "Kotlin",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg"
       },
@@ -74,7 +73,7 @@ const bull = (
 const theme = createTheme({
   palette: {
     background: {
-        paper: "rgb(181, 181, 181)"
+      paper: "rgb(196, 196, 196)"
     },
   },
   typography: {
@@ -135,3 +134,4 @@ export default function Services() {
     </div>
   )
 }
+

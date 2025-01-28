@@ -1,3 +1,9 @@
+.hero__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .hero-header {
   text-align: center;
 }
@@ -15,6 +21,28 @@
   text-align: center;
 }
 
+.credits__container {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.credits {
+  color: red;
+  font-size: 12px;
+  font-weight: 100;
+  text-align: center;
+}
+
+.email {
+  font-size: 16px;
+  font-weight: 200;
+  text-align: center;
+  margin-bottom: 10px;
+}
 .color {
   background-color: #ebebeb;
   background-color: #da2f1b;
@@ -30,16 +58,33 @@
 }
 
 @media screen and (min-width: 720px) {
-  .hero-content {
-    font-size: 1.6rem;
+  .hero-text {
+      font-size: 1.2rem;
+    }
+  
+    .name {
+      font-size: 3rem;
+    }
+  
+    .hero-description {
+      margin-top: 12px;
+      width: 50vw;
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media screen and (min-width: 920px) {
+    .hero-text {
+      font-size: 1.4rem;
   }
 
   .name {
-    font-size: 2.8rem;
+    font-size: 3rem;
   }
 
   .hero-description {
     margin-top: 12px;
     width: 50vw;
+    font-size: 1.4rem;
   }
 }

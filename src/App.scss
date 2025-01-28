@@ -2,6 +2,7 @@
   background-color: #ebebeb;
   height: 100%;
   width: 100%;
+  overflow: auto;
   overflow-y: scroll;
 }
 
@@ -12,6 +13,7 @@
 .content {
   background-color: yellow;
 }
+
 .full__page {
   width: 100vw;
   height: 100vh;
@@ -75,17 +77,20 @@
 }
 
 .title {
-  padding-top: 50px;
-  margin: 10px;
+  font-family: 'Courier New', Courier, monospace;
+    // padding-top: 50px;
+    // margin: 10px;
   color: #2356a6;
   font-size: 8vw;
   padding-left: 8vw;
 
   &>span {
+    font-weight: 800;
     display: block;
     overflow: hidden;
 
     &>span {
+      font-weight: 800;
       display: block;
     }
   }
@@ -99,6 +104,7 @@
     }
   }
 }
+
 .section__container {
   display: flex;
   width: inherit;
@@ -120,12 +126,12 @@
   padding: 10px;
   margin: 20px;
   background-color: transparent;
-  color: #eae34c;
-  border-bottom: 1px solid #eae34c;
+  color: #da2f1b;
+    border-bottom: 2px solid #da2f1b;
 }
 
 .form__input::placeholder {
-  color: #f5ac18;
+  color: #da2f1b;
   opacity: 1;
 }
 
@@ -151,7 +157,7 @@
 }
 
 @media screen and (min-width: 720px) {
-  
+
   .title {
     padding: 0;
     margin: 0;

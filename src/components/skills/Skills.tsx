@@ -12,12 +12,12 @@ export default function Skills() {
         {
           id: 4,
           name: "HTML",
-          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg"
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
         },
         {
           id: 5,
           name: "CSS",
-          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg"
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
         },
         {
           id: 1,
@@ -38,22 +38,18 @@ export default function Skills() {
         {
           id: 4,
           name: "Bootstrap",
-          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg"
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"
+
         },
         {
           id: 5,
           name: "Tailwind css",
-          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg"
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
         },
         {
           id: 6,
           name: "Material UI",
-          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg"
-        },
-        {
-          id: 7,
-          name: "SASS",
-          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg"
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/materialui/materialui-original.svg"
         }
       ],
     },
@@ -115,33 +111,20 @@ export default function Skills() {
         {
           id: 1,
           name: "PostgreSql",
-          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg"
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
+
         },
         {
           id: 2,
           name: "MySql",
-          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg"
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
+
         },
         {
           id: 3,
           name: "MongoDB",
-          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg"
-        },
-      ],
-    },
-    {
-      id: 5,
-      name: "Web Services / API",
-      languages:  [
-        {
-          id: 1,
-          name: "RESTful APIs",
-          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg"
-        },
-        {
-          id: 1,
-          name: "WebSocket",
-          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg"
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
+
         },
       ],
     },
@@ -152,7 +135,7 @@ export default function Skills() {
         {
           id: 1,
           name: "Git",
-          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg"
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
         },
       ],
     },

@@ -48,7 +48,11 @@ export default function App() {
     const [message, setMessage] = useState('');
   
     function validateForm(e: FormEvent<HTMLFormElement>) {
-      e.preventDefault();
+      // e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
 
       if (senderName == "" && senderEmail == "" && message == "") {
         alert("All fields must be filled out");
@@ -132,12 +136,14 @@ export default function App() {
               <animated.span style={textStyles}>Please drop your details below, and I will get back to you </animated.span>
             </span>
             <span className='text-base'>
-              <br />
+              <animated.span style={textStyles}>Or drop a mail at akshithayadla.reddy@gmail.com</animated.span>
+            </span>
+            <span className='text-base'>
               <animated.form className="form" onSubmit={validateForm} style={textStyles}>
               <p>
-                <span className="success" id="sent">&nbsp;</span>
+                  <span className="success" id="sent">&nbsp;</span>
                 <br/>
-                <span className="error" id="error">&nbsp;</span>
+                  <span className="error" id="error">&nbsp;</span>
               </p>
                 <animated.input
                   style={textStyles}
