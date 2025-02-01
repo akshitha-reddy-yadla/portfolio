@@ -3,29 +3,29 @@ import { useState, useEffect } from "react";
 import { config } from "react-spring";
 import React from "react";
 
-interface Card {
-    title: string;
-    content: string;
-}
+// interface Card {
+//     title: string;
+//     content: string;
+// }
 
-interface CarouselProps {
-    cards: Card[];
-    offset: number;
-    showArrows: boolean;
-    width: string;
-    height: string;
-    margin: string;
-}
+// interface CarouselProps {
+//     cards: Card[];
+//     offset: number;
+//     showArrows: boolean;
+//     width: string;
+//     height: string;
+//     margin: string;
+// }
 
-export default function CarouselComponent(props: CarouselProps) {
+export default function CarouselComponent(props) {
     const table = props.cards.map((element, index) => {
         return { ...element, onClick: () => setGoToSlide(index) };
     });
 
-    const [offsetRadius, setOffsetRadius] = useState<number>(2);
-    const [showArrows, setShowArrows] = useState<boolean>(false);
-    const [goToSlide, setGoToSlide] = useState<number | undefined>(undefined); // Change from `null` to `undefined`
-    const [cards] = useState<Card[]>(table);
+    const [offsetRadius, setOffsetRadius] = useState(2);
+    const [showArrows, setShowArrows] = useState(false);
+    const [goToSlide, setGoToSlide] = useState(undefined); // Change from `null` to `undefined`
+    const [cards] = useState(table);
 
     useEffect(() => {
         setOffsetRadius(props.offset);

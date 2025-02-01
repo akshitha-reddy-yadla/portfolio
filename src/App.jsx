@@ -11,7 +11,6 @@ import Contact from './components/contact/Contact';
 import DefaultComponent from './components/default/DefaultComponent';
 import { FormEvent, useState } from 'react';
 import emailjs from 'emailjs-com';
-import { log } from 'console';
 
 
 const X_LINES = 30
@@ -21,8 +20,8 @@ const PAGE_COUNT = 8
 const INITIAL_WIDTH = 10
 
 export default function App() {
-  const containerRef = React.useRef<HTMLDivElement>(null!)
-  const barContainerRef = React.useRef<HTMLDivElement>(null!)
+  const containerRef = React.useRef()
+  const barContainerRef = React.useRef()
 
   const [textStyles, textApi] = useSpring(() => ({
     pointerEvents: 'auto', // Ensure pointer events are enabled
@@ -43,49 +42,48 @@ export default function App() {
     },
   })
 
-    const [senderName, setSenderName] = useState('');
-    const [senderEmail, setSenderEmail] = useState('');
-    const [message, setMessage] = useState('');
-  
-    function validateForm(e: FormEvent<HTMLFormElement>) {
-      // e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
+  const [senderName, setSenderName] = useState('');
+  const [senderEmail, setSenderEmail] = useState('');
+  const [message, setMessage] = useState('');
 
-      if (senderName == "" && senderEmail == "" && message == "") {
-        alert("All fields must be filled out");
-        return false;
-      }else {
-        sendMail(e);
-      }
-    
+  function validateForm(e) {
+    e.preventDefault()
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
+    if (senderName == "" && senderEmail == "" && message == "") {
+      alert("All fields must be filled out");
+      return false;
+    } else {
+      sendMail(e);
     }
-  
-    const sendMail = (e: FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      emailjs
-      .sendForm(
-        import.meta.env.VITE_SERVICE_ID,
-        import.meta.env.VITE_TEMPLATE_ID,
-        e.target as HTMLFormElement,
-        import.meta.env.VITE_PUBLIC_KEY).then(() => {
-          const div = document.getElementById('sent');
-          if (div !== null) {
+
+  }
+
+  const sendMail = (e) => {
+    e.preventDefault();
+    emailjs.sendForm(
+      import.meta.env.VITE_SERVICE_ID,
+      import.meta.env.VITE_TEMPLATE_ID,
+      e.target,
+      import.meta.env.VITE_PUBLIC_KEY).then(() => {
+        const div = document.getElementById('sent');
+        if (div !== null) {
           div.textContent = 'Message sent successfully :)';
           setSenderName('');
           setSenderEmail('');
           setMessage('');
-          }
-        })
-        .catch(() => {
-          const div = document.getElementById('error');
-          if (div !== null) {
+        }
+      })
+      .catch(() => {
+        const div = document.getElementById('error');
+        if (div !== null) {
           div.textContent = 'OOPS! Unknown error occured. Try again later :(';
-          }
-        });
-    };
+        }
+      });
+  };
 
   return (
     <div ref={containerRef} className="body">
@@ -140,42 +138,42 @@ export default function App() {
             </span>
             <span className='text-base'>
               <animated.form className="form" onSubmit={validateForm} style={textStyles}>
-              <p>
+                <p>
                   <span className="success" id="sent">&nbsp;</span>
-                <br/>
+                  <br />
                   <span className="error" id="error">&nbsp;</span>
-              </p>
+                </p>
                 <animated.input
                   style={textStyles}
                   type="text"
                   name="sender_name"
                   value={senderName}
-                  onChange={(e) => {setSenderName(e.target.value)}}
+                  onChange={(e) => { setSenderName(e.target.value) }}
                   required
                   placeholder="your name"
-                  className="form__input"/>
+                  className="form__input" />
                 <animated.input
-                style={textStyles}
-                type="email"
-                name="sender_email"
-                value={senderEmail}
-                onChange={(e) => {setSenderEmail(e.target.value)}}
-                required
-                placeholder="your_email@gmail.com"
-                className="form__input" />
+                  style={textStyles}
+                  type="email"
+                  name="sender_email"
+                  value={senderEmail}
+                  onChange={(e) => { setSenderEmail(e.target.value) }}
+                  required
+                  placeholder="your_email@gmail.com"
+                  className="form__input" />
                 <animated.textarea
-                style={textStyles} 
-                name="message" 
-                value={message} 
-                placeholder="your message" 
-                onChange={(e) => {setMessage(e.target.value)}} 
-                required
-                className="form__input" />
+                  style={textStyles}
+                  name="message"
+                  value={message}
+                  placeholder="your message"
+                  onChange={(e) => { setMessage(e.target.value) }}
+                  required
+                  className="form__input" />
                 <animated.button
-                style={textStyles}
-                type="submit"
-                className="form__button">Send message</animated.button>
-            </animated.form>
+                  style={textStyles}
+                  type="submit"
+                  className="form__button">Send message</animated.button>
+              </animated.form>
             </span>
           </h1>
         </animated.div>
@@ -218,7 +216,7 @@ export default function App() {
               position: 'relative',
               zIndex: 1,
             }}>
-            <Projects key={index} />
+              <Projects key={index} />
             </div>
             <div style={{ borderBottom: '1px dotted black', margin: '20px 0' }}></div>
           </div>;

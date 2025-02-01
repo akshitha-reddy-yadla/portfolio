@@ -10,11 +10,11 @@ import { useWideCardMediaStyles } from "@mui-treasury/styles/cardMedia/wide";
 import { useN01TextInfoContentStyles } from "@mui-treasury/styles/textInfoContent/n01";
 import { useBouncyShadowStyles } from "@mui-treasury/styles/shadow/bouncy";
 
-interface ContentCardDemoProps {
-    title: string;
-    link: string;
-    description: string;
-}
+// interface ContentCardDemoProps {
+//     title: string;
+//     link: string;
+//     description: string;
+// }
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-export const ContentCardDemo: React.FC<ContentCardDemoProps> = React.memo(({ title, link, description }) => {
+export const ContentCardDemo = React.memo(({ title, link, description }) => {
     const styles = useStyles();
     const mediaStyles = useWideCardMediaStyles();
     const textCardContentStyles = useN01TextInfoContentStyles();

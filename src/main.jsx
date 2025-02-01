@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createTheme, ThemeProvider  } from '@mui/material';
 import './index.css'
-import App from './App.tsx'
+import App from './App.jsx'
 
 const THEME = createTheme({
   typography: {
