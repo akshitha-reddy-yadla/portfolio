@@ -6,9 +6,9 @@ import App from './App.jsx'
 
 const THEME = createTheme({
   typography: {
-    fontFamily: [
-      'Courier New', 'Courier', 'monospace'
-    ].join(','),
+    // fontFamily: [
+    //   'Courier New', 'Courier', 'monospace'
+    // ].join(','),
     subtitle1: {
       fontSize: 18,
       fontWeight: 700,

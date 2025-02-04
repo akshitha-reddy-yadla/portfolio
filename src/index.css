@@ -5,15 +5,17 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
-
   color-scheme: light dark;
-
   overflow: auto;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #e7ded0;
+  color: #82614a;
+  font-weight: 700;
+  overflow-x: hidden;
 }
 
 body {
@@ -32,10 +34,6 @@ body,
   width: 100%;
 }
 
-body {
-  font-family: system-ui;
-  margin: 0;
-}
 
 *,
 *:after,
