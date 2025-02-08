@@ -21,6 +21,8 @@ export default function Hero() {
     const movingTextRef = useRef(null);
     const explosionsRef = useRef([]);
     const [explosionsActive, setExplosionsActive] = useState(false);
+    const [isMouseInside, setIsMouseInside] = useState(false);
+    const [transformStyle, setTransformStyle] = useState({});
 
     const svgIcons = [
         book,
@@ -35,36 +37,40 @@ export default function Hero() {
         yoga
     ]
 
-    const handleMouseMove = (e) => {
-        const { clientX: mouseX, clientY: mouseY } = e;
-        const movingText = movingTextRef.current;
-        if (!movingText) return;
+    const handleMouseEnter = () => {
+        setIsMouseInside(true);
+    };
 
-        const textRect = movingText.getBoundingClientRect();
+    const handleMouseLeave = () => {
+        setIsMouseInside(false);
+        setTransformStyle({}); // Reset the position when mouse leaves
+    };
+
+    const handleMouseMove = (e) => {
+        if (!isMouseInside) return;
+
+        const { clientX: mouseX, clientY: mouseY } = e;
+
+        // Get the center position of the text element
+        const textRect = e.target.getBoundingClientRect();
         const textCenterX = textRect.left + textRect.width / 2;
         const textCenterY = textRect.top + textRect.height / 2;
 
+        // Calculate the movement factor
         const deltaX = (mouseX - textCenterX) * 0.1;
         const deltaY = (mouseY - textCenterY) * 0.1;
 
-        movingText.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+        // Apply the movement to the text
+        setTransformStyle({
+            transform: `translate(${deltaX}px, ${deltaY}px)`,
+        });
     };
 
-    React.useEffect(() => {
-        document.addEventListener('mousemove', handleMouseMove);
-
-        return () => {
-            document.removeEventListener('mousemove', handleMouseMove);
-        };
-    }, []);
-
     const handleClick = () => {
-        // Get the center of the screen (viewport)
-        const centerX = window.innerWidth / 2;
-        const centerY = window.innerHeight / 2;
+        const centerX = window.innerWidth / 3;
+        const centerY = window.innerHeight / 4;
 
-        // Trigger the explosion animation
-        setExplosionsActive(true); // Mark explosions as active
+        setExplosionsActive(true); 
 
         explosionsRef.current.forEach((img) => {
             img.style.opacity = 0;
@@ -73,7 +79,7 @@ export default function Hero() {
 
         explosionsRef.current.forEach((img, index) => {
             const angle = Math.random() * 2 * Math.PI;
-            const distance = 150 + Math.random() * 100; // Random distance
+            const distance = 150 + Math.random() * 100;
 
             const targetX = centerX + Math.cos(angle) * distance;
             const targetY = centerY + Math.sin(angle) * distance;
@@ -89,15 +95,20 @@ export default function Hero() {
             }, 1000);
 
             setTimeout(() => {
-                setExplosionsActive(false); // Deactivate explosions
+                setExplosionsActive(false);
             }, 1000);
         });
     }
     return (
-        <div className='section'>
+        <div className='section flex__center flex__col'>
             <div className="hero__content">
                 <h1 className="hero__text">Hi there! I’m...</h1>
-                <h2 className="name" ref={movingTextRef}
+                <h2
+                    className="name"
+                    style={transformStyle}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                    onMouseMove={handleMouseMove}
                     onClick={handleClick}
                 >Akshitha</h2>
                 <div>

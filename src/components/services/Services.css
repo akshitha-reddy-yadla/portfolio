@@ -1,13 +1,19 @@
-.services_section {
-    position: relative;
+.tile {
+    background-color: #cebb9d;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    position: 'relative';
-    z-index: 1;
+    opacity: 0;
+        transform: translateX(100px);
+        transition: transform 0.5s ease-out, opacity 0.5s ease-out;
 }
 
+.tile.slide-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 
 .card {
     margin: 30px;
 }
@@ -36,3 +42,4 @@
     }
 
 }
+*/

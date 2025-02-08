@@ -1,10 +1,8 @@
-import React from 'react'
-import Box from '@mui/material/Box';
-import { Card, CardContent, CardMedia, Typography, Grid, createTheme, ThemeProvider } from '@mui/material';
+import React, { useState, useRef } from 'react'
 import { v4 as uuidv4 } from "uuid";
 import './Services.css';
 import '../../core/styles.css';
-import { AlignHorizontalLeft } from '@mui/icons-material';
+import { useInView } from 'react-intersection-observer';
 
 
 const data = [
@@ -17,7 +15,7 @@ const data = [
         id: 1,
         name: "JavaScript",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-      }, 
+      },
     ],
   },
   {
@@ -40,7 +38,7 @@ const data = [
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
       },
     ],
-    description: "I build reliable back-end systems that power apps, focusing on speed, security, and efficiency",
+    description: "I build reliable back-end systems that power apps, focusing on speed, security, and efficiency, while ensuring scalability and maintainability for long-term success.",
   },
   {
     id: uuidv4(),
@@ -61,77 +59,55 @@ const data = [
   }
 ]
 
-
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-  </Box>
-);
-
-const theme = createTheme({
-  palette: {
-    background: {
-      paper: "rgb(196, 196, 196)"
-    },
-  },
-  typography: {
-    fontFamily: [
-      'Courier New', 'Courier', 'monospace'
-    ].join(','),
-    subtitle1: {
-      fontSize: 18,
-      fontWeight: 700,
-    },
-    subtitle2: {
-      fontSize: 14,
-      fontWeight: 400,
-    },
-    h6: {
-      fontSize: 12,
-      fontWeight: 100,
-    }
-  },
-})
-
 export default function Services() {
   return (
     <div className='section'>
-      <h1 className='section_header'>Services I offer</h1>
-      <div className='services_section'>
-        <Grid container spacing={3}>
-          {data.map((item) => (
-            <Grid item xs={12} md={4} key={item.id}>
-              <ThemeProvider theme={theme}>
-              <Card className="card_container" sx={{ minWidth: 275, '@media (min-width: 960px)': { minWidth: 300 },  }}>
-                <CardContent>
-                  <Typography variant="subtitle1" className='text' component="div">
-                    {item.name}
-                  </Typography>
-                  <Typography variant="subtitle2" className='text' component="div">
-                    {item.description}
-                  </Typography>
-                </CardContent>
-                <center>
-                <Grid container spacing={2}>
-                  {item.icons?.map((icon) => (
-                    <Grid item key={icon.id}>
-                     <img src={icon.icon} alt={icon.name} style={{ width: 40, height: 40 }} />
-                     <Typography variant="body2" align="center">
-                        {icon.name}
-                      </Typography>
-                    </Grid>
-                  ))}
-                </Grid>
-                </center>
-              </Card>
-              </ThemeProvider>
-            </Grid>
-          ))}
-        </Grid>
+      <h1 className='section_header'>(SERVICES)</h1>
+      <div className='flex flex__center'>
+        <div className="container px-4 py-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {
+              data.map((item, index) => (
+                <Card key={item.name} title={item.name} description={item.description} icons={item.icons} delay={index * 0.2} />
+              ))
+            }
+          </div>
+        </div>
       </div>
     </div>
   )
 }
+
+
+const Card = ({ title, description, icons, delay }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef(null);
+
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+    threshold: 0.5,
+  });
+
+  return (
+    <div ref={ref} id={title}
+      className={`tile bg-white p-4 flex__col flex__start rounded-3xl shadow-lg animate-slide-in-right ${inView ? 'slide-in' : ''}`}
+      style={{ transitionDelay: `${delay}s` }}
+    >
+      <div className="h-50 bg-[#] flex__col flex__start mb-4">
+        <h2 className="text-2xl font-semibold">{title}</h2>
+        <p className="text-start mt-2">{description}</p>
+        <div className='flex__center flex__row mt-2'>
+          {
+            icons.map((item) => (
+              <div key={item.name} className='flex__col flex__center mt-4 mr-6'>
+                <img src={item.icon} alt={item.name} style={{ width: 40, height: 40 }} />
+                <p>{item.name}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  );
+};
 

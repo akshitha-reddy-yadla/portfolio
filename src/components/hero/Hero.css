@@ -1,4 +1,5 @@
 .hero__content {
+    /* background-color: aqua; */
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -17,7 +18,7 @@
 .name {
     position: absolute;
     top: 5%;
-    margin: 0 10px;
+    /* margin: 0 10px; */
     color: #583817;
     font-size: 2.8rem;
     font-weight: 700;
@@ -61,33 +62,35 @@
 
 @media screen and (min-width: 500px) {
     .hero__description {
+        font-size: 1.4rem;
         margin: 40px 60px;
     }
 }
 
 @media screen and (min-width: 720px) {
     .hero__description {
-        width: 50vw;
+        width: 70vw;
         margin-top: 50px;
     }
 
     .hero__text {
+        font-size: 1.6rem;
         margin-top: -10px;
+    }
 
-        .name {
-            font-size: 3.2rem;
-        }
+    .name {
+        font-size: 3.2rem;
     }
 }
 
 @media screen and (min-width: 800px) {
     .hero__description {
-        font-size: 1.2rem;
+        font-size: 1.8rem;
         margin-top: 100px;
     }
 
     .hero__text {
-        font-size: 1.2rem;
+        font-size: 1.8rem;
     }
 
     .name {

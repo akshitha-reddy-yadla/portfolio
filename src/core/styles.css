@@ -1,11 +1,30 @@
 .section {
+    width: 100vw;
+    height: 100vh;
+}
+
+.flex__center {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.flex__start {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+}
+
+.flex__col {
     flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-    padding: 10px 20px;
+}
+
+.flex__center__row {
+    flex-direction: row;
+}
+
+.section_header {
+    text-align: left;
 }
 
 .social__icons__container {
