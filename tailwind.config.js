@@ -10,6 +10,17 @@ export default {
         '1/2': '50%',
         full: '100%',
       },
+      fontFamily: {
+        custom: ['Gabarito', 'sans-serif']
+      },
+      fontWeight: {
+        regular: 400,   // Regular weight
+        medium: 500,    // Medium weight
+        semibold: 600,  // SemiBold weight
+        bold: 700,      // Bold weight
+        extrabold: 800, // ExtraBold weight
+        black: 900,     // Black weight
+      },
       fontSize: {
         "heading": ['4rem', {
           lineHeight: '2.25rem',

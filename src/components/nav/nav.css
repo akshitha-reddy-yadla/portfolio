@@ -1,0 +1,25 @@
+.nav__container {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 10px;
+    margin: 10px;
+}
+
+@media screen and (min-width: 420px) {
+    .nav__container {
+        width: 300px;
+        font-size: 12px;
+        margin-top: 16px;
+    }
+}
+
+
+@media screen and (min-width: 720px) {
+    .nav__container {
+        width: 420px;
+        font-size: 14px;
+        margin-top: 24px;
+    }
+}

@@ -100,42 +100,44 @@ export default function Hero() {
         });
     }
     return (
-        <div className='section flex__center flex__col'>
-            <div className="hero__content">
-                <h1 className="hero__text">Hi there! I’m...</h1>
-                <h2
-                    className="name"
-                    style={transformStyle}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                    onMouseMove={handleMouseMove}
-                    onClick={handleClick}
-                >Akshitha</h2>
-                <div>
+        <>
+            <div className='section flex__center flex__col'>
+                <div className="hero__content">
+                    <h1 className="hero__text">Hi there! I’m...</h1>
+                    <h2
+                        className="name"
+                        style={transformStyle}
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        onMouseMove={handleMouseMove}
+                        onClick={handleClick}
+                    >Akshitha</h2>
+                    <div>
 
+                    </div>
+                    {explosionsActive && svgIcons.map((icon, index) => (
+                        <span
+                            key={index}
+                            ref={(el) => (explosionsRef.current[index] = el)}
+                            className='explosion'
+                            style={{
+                                position: 'absolute',
+                                opacity: 0,
+                            }}>
+                            <img src={icon} />
+                        </span>
+
+                    ))
+                    }
+                    <h6 className="hero__description">A full-stack developer who loves building seamless user experiences that go above and beyond. I’m all about solving tricky problems and making things easy and enjoyable for users.</h6>
                 </div>
-                {explosionsActive && svgIcons.map((icon, index) => (
-                    <span
-                        key={index}
-                        ref={(el) => (explosionsRef.current[index] = el)}
-                        className='explosion'
-                        style={{
-                            position: 'absolute',
-                            opacity: 0,
-                        }}>
-                        <img src={icon} />
-                    </span>
-
-                ))
-                }
-                <h6 className="hero__description">A full-stack developer who loves building seamless user experiences that go above and beyond. I’m all about solving tricky problems and making things easy and enjoyable for users.</h6>
+                <div className='social__icons__container'>
+                    <a href="mailto:akshithayadla.reddy@gmail.com" alt="codepen" className="social__icons"><IoMdMail color="#533a28" size={24} /></a>
+                    <a href="https://www.linkedin.com/in/akshitha-yadla/" alt="linkedin" className="social__icons"><FaLinkedinIn color="#533a28" size={24} /></a>
+                    <a href="https://github.com/akshitha-reddy-yadla" alt="github" className="social__icons"><AiFillGithub color="#533a28" size={24} /></a>
+                    <a href="https://codepen.io/Akshitha_Reddy" alt="codepen" className="social__icons"><FiCodepen color="#533a28" size={24} /></a>
+                </div>
             </div>
-            <div className='social__icons__container'>
-                <a href="mailto:akshithayadla.reddy@gmail.com" alt="codepen" className="social__icons"><IoMdMail color="#533a28" size={24} /></a>
-                <a href="https://www.linkedin.com/in/akshitha-yadla/" alt="linkedin" className="social__icons"><FaLinkedinIn color="#533a28" size={24} /></a>
-                <a href="https://github.com/akshitha-reddy-yadla" alt="github" className="social__icons"><AiFillGithub color="#533a28" size={24} /></a>
-                <a href="https://codepen.io/Akshitha_Reddy" alt="codepen" className="social__icons"><FiCodepen color="#533a28" size={24} /></a>
-            </div>
-        </div>
+        </>
     )
 }
