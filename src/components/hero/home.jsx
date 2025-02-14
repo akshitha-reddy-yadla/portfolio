@@ -5,6 +5,9 @@ import { AiFillGithub } from 'react-icons/ai';
 import { FiCodepen } from 'react-icons/fi';
 import { IoMdMail } from "react-icons/io";
 import gsap from "gsap";
+import SplitType from 'split-type';
+
+import { InitialTransition } from '../../App';
 
 import book from '../../assets/hero_icons/books.svg';
 import dog from '../../assets/hero_icons/dog.svg';
@@ -141,10 +144,32 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}>
             <motion.div
-                className=' px-10 section flex__center flex__col'>
+                className='space-y-12 section flex__center flex__col'>
                 <div className="hero__content">
-                    <h1 className="hero__text">Hi there! I am...</h1>
+                    <h1 className="hero__text">Hi there! I’m...</h1>
+                    {/* <h2 variants={title}
+                        className="text-6xl font-black text-center"
+                        style={transformStyle}
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        onMouseMove={handleMouseMove}
+                        onClick={handleClick}
+                    >Akshitha</h2> */}
                     <HeroAnimationWithText />
+                    {explosionsActive && svgIcons.map((icon, index) => (
+                        <span
+                            key={index}
+                            ref={(el) => (explosionsRef.current[index] = el)}
+                            className='explosion'
+                            style={{
+                                position: 'absolute',
+                                opacity: 0,
+                            }}>
+                            <img src={icon} />
+                        </span>
+
+                    ))
+                    }
                     <h6 variants={products} className="text-gray-700 body-font hero__description">A full-stack developer who loves building seamless user experiences that go above and beyond. I’m all about solving tricky problems and making things easy and enjoyable for users.</h6>
                 </div>
                 <div className='social__icons__container'>
@@ -159,7 +184,7 @@ export default function Hero() {
 }
 
 const HeroAnimationWithText = () => {
-    const flowerRef = useRef(); // Reference for the flower SVG
+    const flowerRef = useRef(null); // Reference for the flower SVG
     const textARef = useRef();
     const textKRef = useRef();
     const textHRef = useRef();
@@ -168,200 +193,182 @@ const HeroAnimationWithText = () => {
     const textTRef = useRef();
     const textH2Ref = useRef();
     const textA2Ref = useRef();
+    const lokiRef = useRef();
 
-
+    const lokiLetter = 'I';
 
     useEffect(() => {
 
-        const tween = gsap.fromTo(
-            flowerRef.current,
-            {
-                rotation: -90,
-                x: -200,
-            },
-            {
-                opacity: 1,
-                x: 0,
-                rotation: 360,
-                duration: 5,
-                ease: "linear",
-            }
-        )
-
-
-        gsap.fromTo(
-            textARef.current, {
+        gsap.from(lokiRef.current, {
             opacity: 0,
-            transform: 'scaleX(0)'
-        },
-            {
-                rotationX: 360,
-                opacity: 1,
-                transform: 'scaleX(1)',
-                duration: 2,
-                delay: 3,
-                stagger: 0.1,
-                ease: 'power4.out',
-                onComplete: () => {
-                    tween.play()
-                },
+            scale: 0,
+            duration: 2,// Duration of the SVG pop-up
+            ease: 'power4.out',
+            onComplete: () => {
+                gsap.to(lokiRef.current, {
+                    // y: '40%',
+                    text: 'I',
+                    // opacity: 0,
+                    duration: 0.4,
+                    ease: 'power4.in'
+                })
 
+                // showRefI();
             }
-        )
+        });
 
-        gsap.fromTo(
-            textA2Ref.current, {
-            opacity: 0,
-            transform: 'scaleX(0)'
-        },
-            {
-                rotationX: 360,
+        const showRefI = () => {
+            gsap.to(textIRef.current, {
                 opacity: 1,
-                transform: 'scaleX(1)',
-                duration: 2,
-                delay: 3,
-                stagger: 0.1,
+                scale: 0,
+                duration: 1,
                 ease: 'power4.out',
-                // onComplete: tween,
 
-            }
-        )
-
-        gsap.fromTo(
-            textSRef.current, {
-            x: -10, opacity: 0, position: 'relative'
-        }, {
-            x: 0, opacity: 1, duration: 1, delay: 5, ease: 'power4.out',
+            })
         }
-        )
 
+        // const timer = setTimeout(() => {
+        //     // Hide the SVG
+        //     gsap.to(lokiRef.current, {
+        //         opacity: 1,
+        //         duration: 1,
+        //         ease: 'power4.out',
+        //     });
+
+        //     // Show and animate the letter
+        //     gsap.to(textIRef.current, {
+        //         opacity: 1,
+        //         scale: 0,
+        //         duration: 1,
+        //         ease: 'power4.out',
+        //     });
+        // }, 100); // Delay of 1 minute (60000 ms)
+
+        // return () => clearTimeout(timer); // Clean up timer when the component unmounts
+
+
+        // gsap.fromTo(
+        //     textRef.current, {
+        //     x: -30, opacity: 0, position: 'relative'
+        // },
+        //     {
+        //         x: 0, opacity: 1, duration: 0.4, delay: 0.5, ease: 'power4.out'
+        //     }
+        // )
+
+        gsap.to(textARef.current, {
+            rotationX: 360,
+            opacity: 1,
+            transform: 'scaleX(1)',
+            duration: 2,
+            delay: 2,
+            stagger: 0.1,
+            ease: 'power4.out',
+        });
+
+
+        // gsap.to(textRef.current, {
+        //     y: '100%',
+        //     opacity: 0,
+        //     duration: 0.1,
+        //     ease: 'power4.inOut',
+        //     stagger: 0.45,
+
+        // })
+
+
+        // gsap.fromTo(
+        //     flowerRef.current,
+        //     {
+        //         opacity: 1,   // Start fully visible
+        //         y: 0          // Start at the original position
+        //     },
+        //     {
+        //         opacity: 0,   // Fade out at the end
+        //         y: -10,      // Slide upwards by 100px
+        //         duration: 1,   // Duration of the animation
+        //         delay: 1,      // Wait for 1 second before starting the animation
+        //         ease: "power1.out",
+        //         onComplete: () => {
+        //             // Once flower rotation completes, animate text replacement (H)
+        //             gsap.to(flowerRef.current, {
+        //                 opacity: 0,    // Fade out flower
+        //                 duration: 1,   // Duration of fade out
+        //             });
+
+        //         },
+        //     }
+        // );
+
+
+        // gsap.fromTo(
+        //     '.hero__icon',
+        //     { rotation: 0 }, // initial rotation
+        //     {
+        //         rotation: 360,  // final rotation (one full rotation)
+        //         duration: 3,    // duration of the rotation animation
+        //         ease: 'power2.out',
+        //         onComplete: () => {
+        //             // Once rotation completes, reveal the letters one by one
+        //             gsap.fromTo(
+        //                 '.hero__text span',
+        //                 { opacity: 0, y: 30 },  // initial opacity and position (below)
+        //                 {
+        //                     opacity: 1,  // final opacity (visible)
+        //                     y: 0,        // final position (normal)
+        //                     duration: 0.8,
+        //                     ease: 'power2.out',
+        //                     stagger: 0.1, // Delay between each letter
+        //                 }
+        //             );
+        //         },
+        //     }
+        // );
+    }, []);
+
+    const flipLetter = () => {
+        gsap.to(flipRef.current, {
+            rotationX: 360,
+            duration: 2,
+            repeate: -1,
+            yoyo: true,
+            ease: 'none',
+            delay: 1,
+        });
+    }
+
+    const showSecondText = () => {
         gsap.fromTo(
-            textKRef.current,
+            textRef.current,
             {
                 y: -10, opacity: 0, position: 'relative'
             },
             {
-                y: 0, opacity: 1, duration: 1, delay: 4, ease: 'power4.out'
+                y: 0, opacity: 1, duration: 1, delay: 0.5, ease: 'power4.out',
+                onComplete: flipLetter
             }
         )
-
-        gsap.fromTo(
-            textHRef.current, {
-            y: '30%',
-            opacity: 0,
-        }, {
-            opacity: 1,
-            delay: 2,
-            y: '0%',
-        })
-
-        gsap.fromTo(
-            textIRef.current, {
-            y: '-30%',
-            opacity: 0,
-        }, {
-            opacity: 1,
-            y: '0%',
-            delay: 2,
-        })
-
-        gsap.fromTo(
-            textTRef.current, {
-            x: 10, opacity: 0, position: 'relative'
-        }, {
-            x: 0, opacity: 1, duration: 1, delay: 6, ease: 'power4.out',
-        }
-        )
-
-        gsap.fromTo(
-            textH2Ref.current,
-            {
-                y: 10, opacity: 0, position: 'relative'
-            },
-            {
-                y: 0, opacity: 1, duration: 1, delay: 7, ease: 'power4.out'
-            }
-        )
-
-        // gsap.from(lokiRef.current, {
-        //     opacity: 0,
-        //     scale: 0,
-        //     duration: 2,
-        //     ease: 'power4.out',
-        //     onComplete: () => {
-        //         gsap.fromTo(
-        //             lokiRef.current, {
-        //             rotation: 0,
-        //         }, {
-        //             x: '-10%',
-        //             rotation: 360,
-        //             duration: 1,
-        //             ease: 'power1.in',
-        //             opacity: 0,
-        //             onComplete: showRefI
-        //         }
-        //         )
-        //         // gsap.to(lokiRef.current, {
-        //         //     // y: '30%',
-        //         //     y: '10%',
-        //         //     text: 'I',
-        //         //     rotate: 360,
-        //         //     transform: 'scale(1)',
-        //         //     // opacity: 0,
-        //         //     duration: 0.4,
-        //         //     ease: 'power4.in'
-        //         // })
-
-        //         // showRefI();
-        //     }
-        // });
-
-
-
-    }, []);
-
-
+    }
 
     return (
         <span className='animate-letter'>
-            <p className='name'>
-
-                <span ref={textARef} className='A'>A</span>
+            <span className='name'>
+                <span ref={textARef}
+                    className='A'
+                >A</span>
                 <span ref={textKRef} className='K'>K</span>
                 <span ref={textSRef} className='S'>S</span>
                 <span ref={textHRef} className='H'>H</span>
-                <span ref={textIRef} className='I'>I</span>
+                <div className='lokiContainer'>
+                    <img ref={lokiRef} className='loki' src={loki} />
+                    <span ref={textIRef} className='I'>{lokiLetter}</span>
+                </div>
                 <span ref={textTRef} className='T'>T</span>
                 <span ref={textH2Ref} className='H2'>H</span>
-
                 <span ref={textA2Ref} className='A2'>A</span>
-                {/* <span className='A2'> */}
-                <img ref={flowerRef} className='flower' src={flower} />
-                {/* </span> */}
 
-            </p>
+
+            </span>
         </span >
-        // <div className="hero bg-red-400">
-        //     {/* <img className='hero__icon loki' src={loki} /> */}
-        //     <div className="hero-text">
-        //         <p className=''>Hi, I am</p>
-        //         <h1 className='hero__text'>
-        //             <span className='clip'>
-        //                 <img ref={flowerRef} className='hero__icon loki' src={loki} />
-        //                 <span className='hero__text'>A</span>
-        //             </span>
-        //             <span>K</span>
-        //             <span>S</span>
-        //             <span className='letter-H' ref={textRef} >H</span>
-        //             <span>I</span>
-        //             <span>T</span>
-        //             <span>H</span>
-        //             <span>A</span>
-        //         </h1>
-        //         {/* <p className='hero__description'>A full-stack developer who loves building seamless user experiences that go above and beyond. I’m all about solving tricky problems and making things easy and enjoyable for users.</p> */}
-        //     </div>
-        // </div>
     );
 };
-
-// export default HeroAnimationWithText;

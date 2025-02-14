@@ -32,7 +32,8 @@
 }
 
 .section_header {
-    text-align: left;
+    text-align: center;
+    font-weight: ;
 }
 
 .social__icons__container {
@@ -48,6 +49,11 @@
     height: 20px;
 }
 
+button {
+    background-color: cadetblue;
+    margin: 2px;
+    cursor: grab;
+}
 /* @media screen and (min-width: 920px) {
 
     .md__full_page {

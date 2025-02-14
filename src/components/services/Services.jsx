@@ -62,7 +62,20 @@ const data = [
 export default function Services() {
   return (
     <div className='section'>
-      <h1 className='section_header'>(SERVICES)</h1>
+      <h1 className='section_header'>What I do</h1>
+      <div className="container mx-auto p-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="relative w-full pb-full bg-blue-500">
+            <div className="absolute inset-0 flex items-center justify-center text-white">1</div>
+          </div>
+          <div className="relative w-full pb-full bg-green-500">
+            <div className="absolute inset-0 flex items-center justify-center text-white">2</div>
+          </div>
+          <div className="relative w-full pb-full bg-red-500">
+            <div className="absolute inset-0 flex items-center justify-center text-white">3</div>
+          </div>
+        </div>
+      </div>
       <div className='flex flex__center'>
         <div className="container px-4 py-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -89,25 +102,43 @@ const Card = ({ title, description, icons, delay }) => {
   });
 
   return (
-    <div ref={ref} id={title}
-      className={`tile bg-white p-4 flex__col flex__start rounded-3xl shadow-lg animate-slide-in-right ${inView ? 'slide-in' : ''}`}
-      style={{ transitionDelay: `${delay}s` }}
-    >
-      <div className="h-50 bg-[#] flex__col flex__start mb-4">
-        <h2 className="text-2xl font-semibold">{title}</h2>
-        <p className="text-start mt-2">{description}</p>
-        <div className='flex__center flex__row mt-2'>
-          {
-            icons.map((item) => (
-              <div key={item.name} className='flex__col flex__center mt-4 mr-6'>
-                <img src={item.icon} alt={item.name} style={{ width: 40, height: 40 }} />
-                <p>{item.name}</p>
-              </div>
-            ))
-          }
+    <div id={title} className="relative w-full pb-full tile">
+      <div className="absolute inset-0 flex items-center justify-center ">
+        <div className="bg-[#] flex__col flex__start mb-4">
+          <h2 className="text-2xl font-semibold">{title}</h2>
+          <p className="text-start text__description mt-2">{description}</p>
+          <div className='flex__center flex__row mt-2'>
+            {
+              icons.map((item) => (
+                <div key={item.name} className='flex__col flex__center mt-4 mr-6'>
+                  <img src={item.icon} alt={item.name} style={{ width: 40, height: 40 }} />
+                  <p>{item.name}</p>
+                </div>
+              ))
+            }
+          </div>
         </div>
       </div>
     </div>
+    // <div ref={ref} id={title}
+    //   className={`tile bg-white p-4 flex__col flex__start rounded-3xl shadow-lg animate-slide-in-right ${inView ? 'slide-in' : ''}`}
+    //   style={{ transitionDelay: `${delay}s` }}
+    // >
+    //   <div className="bg-[#] flex__col flex__start mb-4">
+    //     <h2 className="text-2xl font-semibold">{title}</h2>
+    //     <p className="text-start mt-2">{description}</p>
+    //     <div className='flex__center flex__row mt-2'>
+    //       {
+    //         icons.map((item) => (
+    //           <div key={item.name} className='flex__col flex__center mt-4 mr-6'>
+    //             <img src={item.icon} alt={item.name} style={{ width: 40, height: 40 }} />
+    //             <p>{item.name}</p>
+    //           </div>
+    //         ))
+    //       }
+    //     </div>
+    //   </div>
+    // </div>
   );
 };
 

@@ -1,16 +1,24 @@
 .tile {
-    background-color: #cebb9d;
+    background-color: #8d7b68;
+    color: #f1dec9;
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0;
-        transform: translateX(100px);
-        transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+    padding: 10px auto;
+    padding-left: 10px;
+
+    /* opacity: 0; */
+        /* transform: translateX(100px);
+        transition: transform 0.5s ease-out, opacity 0.5s ease-out; */
 }
 
 .tile.slide-in {
     opacity: 1;
     transform: translateX(0);
+}
+
+.text__description {
+    font-size: 14px;
 }
 
 /* 

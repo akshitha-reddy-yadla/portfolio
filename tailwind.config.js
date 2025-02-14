@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        brown: '#6e4627', // Example brown color hex
+      },
       padding: {
         '1/2': '50%',
         full: '100%',
