@@ -21,8 +21,7 @@ const Navbar = () => {
             <nav className="">
                 <div className="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
                     {/* Logo */}
-                    <Link to="/">
-                        <div className="text-sm font-bold">Akshitha</div>
+                    <Link to="/" className="text-sm font-bold">Akshitha
                     </Link>
 
                     {/* Hamburger Icon for Mobile */}
@@ -77,7 +76,7 @@ const Navbar = () => {
                         Home
                     </Link>
                     <Link to="/services" onClick={handleNavItemClick} className="hover:text-orange-100 transition-all duration-300">
-                        Services
+                         Services
                     </Link>
                     <Link to="/experience" onClick={handleNavItemClick} className="hover:text-orange-100 transition-all duration-300">
                         Experience

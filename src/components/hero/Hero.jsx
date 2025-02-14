@@ -5,23 +5,9 @@ import { AiFillGithub } from 'react-icons/ai';
 import { FiCodepen } from 'react-icons/fi';
 import { IoMdMail } from "react-icons/io";
 import gsap from "gsap";
-
-import book from '../../assets/hero_icons/books.svg';
-import dog from '../../assets/hero_icons/dog.svg';
-import dumbell from '../../assets/hero_icons/dumbell.svg';
-import food from '../../assets/hero_icons/food.svg';
-import glasses from '../../assets/hero_icons/glasses.svg';
-import glassess from '../../assets/hero_icons/glassess.svg';
-import hair from '../../assets/hero_icons/hair.svg';
-import laptop from '../../assets/hero_icons/laptop.svg';
-import plant from '../../assets/hero_icons/plant.svg';
-import yoga from '../../assets/hero_icons/yoga.svg';
-
-import loki from '../../assets/loki.svg';
 import flower from '../../assets/flower.svg';
 
 import './Hero.css'
-import { duration } from '@mui/material';
 
 const content = {
     animate: {
@@ -148,7 +134,10 @@ export default function Hero() {
                     <h6 variants={products} className="text-gray-700 body-font hero__description">A full-stack developer who loves building seamless user experiences that go above and beyond. I’m all about solving tricky problems and making things easy and enjoyable for users.</h6>
                 </div>
                 <div className='social__icons__container'>
-                    <a href="mailto:akshithayadla.reddy@gmail.com" alt="codepen" className="social__icons"><IoMdMail color="#533a28" size={24} /></a>
+
+                    <a href="mailto:akshithayadla.reddy@gmail.com" alt="codepen" className="social__icons z-10">
+                        <IoMdMail color="#533a28" size={24} />
+                    </a>
                     <a href="https://www.linkedin.com/in/akshitha-yadla/" alt="linkedin" className="social__icons"><FaLinkedinIn color="#533a28" size={24} /></a>
                     <a href="https://github.com/akshitha-reddy-yadla" alt="github" className="social__icons"><AiFillGithub color="#533a28" size={24} /></a>
                     <a href="https://codepen.io/Akshitha_Reddy" alt="codepen" className="social__icons"><FiCodepen color="#533a28" size={24} /></a>
@@ -159,7 +148,7 @@ export default function Hero() {
 }
 
 const HeroAnimationWithText = () => {
-    const flowerRef = useRef(); // Reference for the flower SVG
+    const flowerRef = useRef();
     const textARef = useRef();
     const textKRef = useRef();
     const textHRef = useRef();
@@ -222,8 +211,6 @@ const HeroAnimationWithText = () => {
                 delay: 3,
                 stagger: 0.1,
                 ease: 'power4.out',
-                // onComplete: tween,
-
             }
         )
 
@@ -282,50 +269,11 @@ const HeroAnimationWithText = () => {
                 y: 0, opacity: 1, duration: 1, delay: 7, ease: 'power4.out'
             }
         )
-
-        // gsap.from(lokiRef.current, {
-        //     opacity: 0,
-        //     scale: 0,
-        //     duration: 2,
-        //     ease: 'power4.out',
-        //     onComplete: () => {
-        //         gsap.fromTo(
-        //             lokiRef.current, {
-        //             rotation: 0,
-        //         }, {
-        //             x: '-10%',
-        //             rotation: 360,
-        //             duration: 1,
-        //             ease: 'power1.in',
-        //             opacity: 0,
-        //             onComplete: showRefI
-        //         }
-        //         )
-        //         // gsap.to(lokiRef.current, {
-        //         //     // y: '30%',
-        //         //     y: '10%',
-        //         //     text: 'I',
-        //         //     rotate: 360,
-        //         //     transform: 'scale(1)',
-        //         //     // opacity: 0,
-        //         //     duration: 0.4,
-        //         //     ease: 'power4.in'
-        //         // })
-
-        //         // showRefI();
-        //     }
-        // });
-
-
-
     }, []);
-
-
 
     return (
         <span className='animate-letter'>
             <p className='name'>
-
                 <span ref={textARef} className='A'>A</span>
                 <span ref={textKRef} className='K'>K</span>
                 <span ref={textSRef} className='S'>S</span>
@@ -333,35 +281,11 @@ const HeroAnimationWithText = () => {
                 <span ref={textIRef} className='I'>I</span>
                 <span ref={textTRef} className='T'>T</span>
                 <span ref={textH2Ref} className='H2'>H</span>
-
                 <span ref={textA2Ref} className='A2'>A</span>
-                {/* <span className='A2'> */}
                 <img ref={flowerRef} className='flower' src={flower} />
-                {/* </span> */}
 
             </p>
         </span >
-        // <div className="hero bg-red-400">
-        //     {/* <img className='hero__icon loki' src={loki} /> */}
-        //     <div className="hero-text">
-        //         <p className=''>Hi, I am</p>
-        //         <h1 className='hero__text'>
-        //             <span className='clip'>
-        //                 <img ref={flowerRef} className='hero__icon loki' src={loki} />
-        //                 <span className='hero__text'>A</span>
-        //             </span>
-        //             <span>K</span>
-        //             <span>S</span>
-        //             <span className='letter-H' ref={textRef} >H</span>
-        //             <span>I</span>
-        //             <span>T</span>
-        //             <span>H</span>
-        //             <span>A</span>
-        //         </h1>
-        //         {/* <p className='hero__description'>A full-stack developer who loves building seamless user experiences that go above and beyond. I’m all about solving tricky problems and making things easy and enjoyable for users.</p> */}
-        //     </div>
-        // </div>
     );
 };
 
-// export default HeroAnimationWithText;

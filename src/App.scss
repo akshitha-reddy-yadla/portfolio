@@ -8,10 +8,157 @@
   z-index: 10;
 }
 
-.loki {
-  width: 150px;
-  height: 150px;
+.loki-loading {
+  width: 80px;
+  height: 80px;
 }
+
+.app {
+  padding: 20px;
+}
+
+.fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: rgb(68, 16, 16);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.fab-icon {
+  margin-bottom: 4px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.contact-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.contact-content {
+  position: relative;
+  background-color: beige;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 8px;
+  z-index: 20;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.contact-content h2 {
+  text-align: center;
+}
+
+.contact-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-content label {
+  margin-top: 10px;
+}
+
+.contact-content input,
+.contact-content textarea {
+  padding: 10px;
+  margin: 5px 0 15px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #453b3a;
+}
+
+.form__input:focus {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #635857;
+}
+
+input:focus,
+textarea:focus {
+  border: none;
+  border-bottom: 2px solid #635857;
+}
+
+
+
+.contact-content button {
+  padding: 10px;
+  background-color: rgb(126, 91, 59);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.contact-content button:hover {
+  background-color: rgb(162, 111, 63);
+}
+
+.close-btn {
+  position: absolute;
+  right: 5px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+}
+
+.cloud {
+  position: absolute;
+  bottom: 55px;
+  width: 80px;
+  left: -30%;
+  transform: translateX(-50%);
+  background-color: rgb(149, 142, 142);
+  padding: 5px;
+  border-radius: 10px 10px 0px 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 200px;
+  text-align: center;
+}
+
+.cloud-text {
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .contact-content {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .fab {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+  }
+}
+
 
 @media screen and (min-width: 420px) {
   .nav__container {
@@ -30,7 +177,7 @@
 @media screen and (min-width: 720px) {
 
   .nav__container {
-      width: 420px;
+    width: 420px;
       font-size: 14px;
       margin-top: 24px;
     }
