@@ -119,16 +119,14 @@ export default function App() {
   const toggleContactPage = () => {
     setIsContactOpen(!isContactOpen);
   };
-
   useEffect(() => {
+
     const interval = setInterval(() => {
       setFabText((prevText) => (prevText === '!!' ? 'Contact Us' : '!!'));
     }, 10000);
 
     return () => clearInterval(interval);
   }, []);
-
-
 
   const handleNavigation = (page) => {
     setCurrentPage(page);

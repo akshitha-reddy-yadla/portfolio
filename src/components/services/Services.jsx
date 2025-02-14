@@ -1,13 +1,15 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { v4 as uuidv4 } from "uuid";
 import './Services.css';
 import '../../core/styles.css';
 import { useInView } from 'react-intersection-observer';
+import gsap from "gsap";
 
+import loki from '../../assets/loki.svg';
 
 const data = [
   {
-    id: uuidv4(),
+    id: "01",
     name: "Front-end development",
     description: "I love creating responsive websites that provide the best user experience, making sure everything looks great and works seamlessly across all devices",
     icons: [
@@ -19,7 +21,24 @@ const data = [
     ],
   },
   {
-    id: uuidv4(),
+    id: "02",
+    name: "Android development",
+    icons: [
+      {
+        id: uuidv4(),
+        name: "Dart",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg"
+      },
+      {
+        id: uuidv4(),
+        name: "Kotlin",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg"
+      },
+    ],
+    description: "I develop mobile apps for android, creating intuitive and high-performance applications, using both native and cross-platform technologies",
+  },
+  {
+    id: "03",
     name: "Back-end development",
     icons: [
       {
@@ -40,48 +59,75 @@ const data = [
     ],
     description: "I build reliable back-end systems that power apps, focusing on speed, security, and efficiency, while ensuring scalability and maintainability for long-term success.",
   },
-  {
-    id: uuidv4(),
-    name: "Android development",
-    icons: [
-      {
-        id: uuidv4(),
-        name: "Dart",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg"
-      },
-      {
-        id: uuidv4(),
-        name: "Kotlin",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg"
-      },
-    ],
-    description: "I develop mobile apps for android, creating intuitive and high-performance applications, using both native and cross-platform technologies",
-  }
+]
+
+const words = [
+  "Web-development",
+  "Mobile-development",
+  "Back-end-development",
+  "Web-development",
+  "Mobile-development",
+  "Back-end-development",
+  "Web-development",
+  "Mobile-development",
+  "Back-end-development",
+  "Web-development",
+  "Mobile-development",
+  "Back-end-development",
+  "Web-development",
+  "Mobile-development",
+  "Back-end-development",
 ]
 
 export default function Services() {
+  const hrRef = useRef();
+
+  useEffect(() => {
+
+    gsap.fromTo(
+      hrRef.current,
+      {
+        width: '0%',
+        opacity: 0,
+      },
+      {
+        width: '100%',
+        opacity: 1,
+        duration: 2,
+        delay: 3,
+        ease: 'power2.out',
+      }
+    );
+
+  }, []);
+
   return (
     <div className='section'>
-      <h1 className='section_header'>What I do</h1>
-      <div className="container mx-auto p-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div className="relative w-full pb-full bg-blue-500">
-            <div className="absolute inset-0 flex items-center justify-center text-white">1</div>
-          </div>
-          <div className="relative w-full pb-full bg-green-500">
-            <div className="absolute inset-0 flex items-center justify-center text-white">2</div>
-          </div>
-          <div className="relative w-full pb-full bg-red-500">
-            <div className="absolute inset-0 flex items-center justify-center text-white">3</div>
-          </div>
+      scroll
+      <div className="scrolling-container">
+        <div className="scrolling-text">
+          <ScrollingText words={words} icon={loki} />
         </div>
       </div>
-      <div className='flex flex__center'>
-        <div className="container px-4 py-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <br />
+      <h1 className='section_header'>What I do</h1>
+      <div className='flex__center'>
+        <div className='services'>
+          <div className='service__header__container'>
+            <p className='service__header sd:text-left'>Services</p>
+            <p className='service__header service__header__info'>Info</p>
+          </div>
+          <hr ref={hrRef} style={{ border: '1px solid rgb(189, 133, 90)' }} />
+          <div className=''>
             {
               data.map((item, index) => (
-                <Card key={item.name} title={item.name} description={item.description} icons={item.icons} delay={index * 0.2} />
+                <div key={index} className='services__list'>
+                  <div className='services__sub__list'>
+                    <p className='service__id mx-4'>{item.id}</p>
+                    <p className='service__name'>{item.name}</p>
+                  </div>
+                  <p className='service__description'>{item.description}</p>
+                </div>
               ))
             }
           </div>
@@ -120,25 +166,19 @@ const Card = ({ title, description, icons, delay }) => {
         </div>
       </div>
     </div>
-    // <div ref={ref} id={title}
-    //   className={`tile bg-white p-4 flex__col flex__start rounded-3xl shadow-lg animate-slide-in-right ${inView ? 'slide-in' : ''}`}
-    //   style={{ transitionDelay: `${delay}s` }}
-    // >
-    //   <div className="bg-[#] flex__col flex__start mb-4">
-    //     <h2 className="text-2xl font-semibold">{title}</h2>
-    //     <p className="text-start mt-2">{description}</p>
-    //     <div className='flex__center flex__row mt-2'>
-    //       {
-    //         icons.map((item) => (
-    //           <div key={item.name} className='flex__col flex__center mt-4 mr-6'>
-    //             <img src={item.icon} alt={item.name} style={{ width: 40, height: 40 }} />
-    //             <p>{item.name}</p>
-    //           </div>
-    //         ))
-    //       }
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 
+
+const ScrollingText = ({ words, icon }) => {
+  return (
+    <div className="scrolling-container">
+      {words.map((word, index) => (
+        <React.Fragment key={index}>
+          <span>{word}</span>
+          {index < words.length - 1 && <img className="loki" src={loki} />}
+        </React.Fragment>
+      ))}
+    </div>
+  );
+};
