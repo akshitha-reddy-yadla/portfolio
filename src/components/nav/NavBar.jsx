@@ -50,7 +50,7 @@ const Navbar = () => {
                     <div className="hidden lg:flex z-10 space-x-8">
                         <Link to="/" className="hover:text-red-800 transition-all Z-10 duration-300">Home</Link>
                         <Link to="/services" className="hover:text-red-800 transition-all Z-10 duration-300">Services</Link>
-                        <Link to="/experience" className="hover:text-red-800 transition-all Z-10 duration-300">Experience</Link>
+                        {/* <Link to="/experience" className="hover:text-red-800 transition-all Z-10 duration-300">Experience</Link> */}
                         <Link to="/projects" className="hover:text-red-800 transition-all Z-10 duration-300">Projects</Link>
                     </div>
                 </div>
@@ -78,9 +78,9 @@ const Navbar = () => {
                     <Link to="/services" onClick={handleNavItemClick} className="hover:text-orange-100 transition-all duration-300">
                          Services
                     </Link>
-                    <Link to="/experience" onClick={handleNavItemClick} className="hover:text-orange-100 transition-all duration-300">
+                    {/* <Link to="/experience" onClick={handleNavItemClick} className="hover:text-orange-100 transition-all duration-300">
                         Experience
-                    </Link>
+                    </Link> */}
                     <Link to="/projects" onClick={handleNavItemClick} className="hover:text-orange-100 transition-all duration-300">
                         Projects
                     </Link>

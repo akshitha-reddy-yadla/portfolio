@@ -5,7 +5,6 @@ import './core/styles.css'
 import Hero from './components/hero/Hero'
 import Services from './components/services/Services'
 import Projects from './components/projects/Projects'
-import Experience from './components/experience/Experience'
 import Navbar from './components/nav/NavBar'
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import emailjs from 'emailjs-com';
@@ -221,7 +220,7 @@ export default function App() {
           <Routes >
             <Route path="/" element={<Hero />} />
             <Route path="/services" element={<Services />} />
-            <Route path="/experience" element={<Experience />} />
+            {/* <Route path="/experience" element={<Experience />} /> */}
             <Route path="/projects" element={<Projects />} />
           </Routes>
         </motion.section>
@@ -239,14 +238,15 @@ export default function App() {
           <div className="contact-page">
             <div className="contact-content">
               <button className="close-btn" onClick={toggleContactPage}>X</button>
-              <span>Let's talk</span>
-              <br />
-              <span >Please drop your details below, and I will get back to you </span>
-              <br />
-              <span>Or</span>
-              <br />
-              <span >drop a mail at akshithayadla.reddy@gmail.com</span>
-              <br />
+              <div className='text-center'>
+                <span>Let's talk</span>
+                <br />
+                <span >Please drop your details below, and I will get back to you </span>
+                <br />
+                <span>Or</span>
+                <br />
+                <span >drop a mail at akshithayadla.reddy@gmail.com</span>
+              </div>
               <form className="form" onSubmit={validateForm} >
                 <p>
                   <span className="success text-green-700" id="sent">&nbsp;</span>
