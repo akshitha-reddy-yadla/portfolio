@@ -1,53 +1,27 @@
-
 export const data = [
     {
         id: 1,
         name: "CrimeScene Atlas",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nobis fugit autem officiis ullam vero quo corporis eligendi neque nisi ea repellendus, fugiat iste incidunt pariatur omnis minima explicabo in?",
-        link: "",
-        color: "#6A6F4C",
-        image:
-            'https://images.unsplash.com/photo-1708282604702-99bae7574ff0?q=80&w=800&h=800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        alt: 'Snowny mountains the setting sun reflecting on the peaks',
+        description: "Explore infamous psychopaths from history on our interactive map, featuring a clickable list for easy exploration and locations associated with their crimes and exploits. Built as a seamless single-page application with React.",
     },
     {
         id: 2,
         name: "Budget App",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nobis fugit autem officiis ullam vero quo corporis eligendi neque nisi ea repellendus, fugiat iste incidunt pariatur omnis minima explicabo in?",
-        link: "",
-        color: "",
-        image:
-            'https://images.unsplash.com/photo-1708282604702-99bae7574ff0?q=80&w=800&h=800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        alt: 'Snowny mountains the setting sun reflecting on the peaks',
+        description: "Stay on top of your finances with our Budget app, a comprehensive full-stack application built with Ruby. Easily track your daily expenses across multiple categories, gaining valuable insights into your spending habits and helping you make informed decisions about your financial future.",
     },
     {
         id: 3,
         name: "Menu App",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nobis fugit autem officiis ullam vero quo corporis eligendi neque nisi ea repellendus, fugiat iste incidunt pariatur omnis minima explicabo in?",
-        link: "",
-        color: "",
-        image:
-            'https://images.unsplash.com/photo-1708282604702-99bae7574ff0?q=80&w=800&h=800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        alt: 'Snowny mountains the setting sun reflecting on the peaks',
+        description: "This innovative digital menu app is designed to cater to the needs of both partners and customers. Built with Flutter, this robust platform utilizes a single codebase to power both the mobile app and responsive web application, enabling effortless menu updates and hassle-free payments.",
     },
     {
         id: 4,
         name: "Relational Migration",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nobis fugit autem officiis ullam vero quo corporis eligendi neque nisi ea repellendus, fugiat iste incidunt pariatur omnis minima explicabo in?",
-        link: "",
-        color: "",
-        image:
-            'https://images.unsplash.com/photo-1708282604702-99bae7574ff0?q=80&w=800&h=800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        alt: 'Snowny mountains the setting sun reflecting on the peaks',
+        description: "This project involves migrating data from an SQL database to a NoSQL system. It includes adapting the data structure, ensuring consistency, and optimizing performance for the new system. The goal is to ensure a smooth transition while maintaining data integrity and functionality.",
     },
     {
         id: 5,
         name: "Productivity App",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nobis fugit autem officiis ullam vero quo corporis eligendi neque nisi ea repellendus, fugiat iste incidunt pariatur omnis minima explicabo in?",
-        link: "",
-        color: "",
-        image:
-            'https://images.unsplash.com/photo-1708282604702-99bae7574ff0?q=80&w=800&h=800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        alt: 'Snowny mountains the setting sun reflecting on the peaks',
+        description: "A cutting-edge productivity mobile app, built with Flutter, harnesses the power of native features to help you stay focused. Track your screen time and app usage with precision, and block distracting apps to stay on track.",
     }
 ]
