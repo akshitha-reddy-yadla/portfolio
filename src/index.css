@@ -2,18 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "GabaritoBlack";
+  src: url('/fonts/Gabarito-Black.ttf') format(truetype);
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GabaritoBold";
+  src: url('/fonts/Gabarito-Bold.ttf') format(truetype);
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GabaritoExtraBold";
+  src: url('/fonts/Gabarito-ExtraBold.ttf') format(truetype);
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GabaritoMedium";
+  src: url('/fonts/Gabarito-Medium.ttf') format(truetype);
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GabaritoRegular";
+  src: url('/fonts/Gabarito-Regular.ttf') format(truetype);
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GabaritoSemiBold";
+  src: url('/fonts/Gabarito-SemiBold.ttf') format(truetype);
+  font-weight: 600;
+  font-style: normal;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
-
   color-scheme: light dark;
-
   overflow: auto;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #e7ded0;
+  color: #82614a;
+  font-weight: 700;
+  overflow-x: hidden;
 }
 
 body {
@@ -32,13 +76,33 @@ body,
   width: 100%;
 }
 
-body {
-  font-family: system-ui;
-  margin: 0;
-}
 
 *,
 *:after,
 *:before {
   box-sizing: border-box;
+}
+/* Example CSS for animating the SVG icon */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  animation: pulse 1.5s ease-in-out infinite;
+  /* Animation name, duration, easing, and loop */
 }

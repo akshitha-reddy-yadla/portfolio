@@ -1,89 +1,85 @@
-.hero__content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.flower {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
 }
-.hero-header {
-  text-align: center;
+
+.A {
+    display: inline-block;
+    opacity: 1;
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+}
+
+.animate-letter span {
+    display: inline-block;
 }
 
 .name {
-  margin: 0 10px;
-  color: #2356a6;
-  font-size: 2rem;
-  font-weight: 700;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #583817;
+    font-size: 2.8rem;
+    font-weight: 700;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    transition: transform 0.1s ease-out;
+    cursor: pointer;
+    z-index: 1;
 }
 
-.hero-description {
-  padding: 0 5px;
-  text-align: center;
+.social__icons__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 }
 
-.credits__container {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 20px;
+.social__icons {
+    margin: 20px 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    z-index: 10;
 }
-
-.credits {
-  font-size: 12px;
-  font-weight: 100;
-  text-align: center;
-}
-
-.email {
-  font-size: 16px;
-  font-weight: 200;
-  text-align: center;
-  margin-bottom: 10px;
-}
-.color {
-  background-color: #ebebeb;
-  background-color: #da2f1b;
-  background-color: #f5ac18;
-  background-color: #2356a6;
-  background-color: #eb5b3d;
-  background-color: #ffebf9;
-  background-color: #ffcaca;
-  background-color: #1ba8ab;
-  background-color: #eae34c;
-  background-color: #1d1d1d;
-  background-color: rgb(181, 181, 181);
-}
-
 @media screen and (min-width: 720px) {
-  .hero-text {
-      font-size: 1.2rem;
+    .hero__description {
+        width: 70vw;
+        font-size: 1.1rem;
     }
-  
+
+    .flower {
+        width: 50px;
+        height: 50px;
+    }
+
+
+    .hero__text {
+        font-size: 1.6rem;
+        margin-top: -10px;
+    }
+
     .name {
-      font-size: 3rem;
+        font-size: 3.2rem;
     }
-  
-    .hero-description {
-      margin-top: 12px;
-      width: 50vw;
-      font-size: 1.2rem;
+}
+
+@media screen and (min-width: 800px) {
+    .name {
+        font-size: 4rem;
     }
-  }
-  
-  @media screen and (min-width: 920px) {
-    .hero-text {
-      font-size: 1.4rem;
-  }
 
-  .name {
-    font-size: 3rem;
-  }
+    .hero__text {
+        font-size: 1.5rem;
+    }
 
-  .hero-description {
-    margin-top: 12px;
-    width: 50vw;
-    font-size: 1.4rem;
-  }
+    .hero__description {
+        font-size: 1.5rem;
+        width: 50vw;
+    }
+
+    .flower {
+        width: 80px;
+        height: 80px;
+    }
+
 }

@@ -7,18 +7,22 @@ export default {
   theme: {
     extend: {
       colors: {
-        organic: "#6A6F4C",
-        butter: "#CBB89D",
-        coconut: "#EDE1D2",
-        natural: "#806044",
-        palm: '#5D2510',
-        cocoa: "#412F26",
-        primary: "#6A6F4C",
-        secondary: "#CBB89D",
-        tertiary: "#EDE1D2",
-        quanternary: "#806044",
-        fifth: "#5D2510",
-        sixth: "#412F26",
+        brown: '#6e4627', // Example brown color hex
+      },
+      padding: {
+        '1/2': '50%',
+        full: '100%',
+      },
+      fontFamily: {
+        custom: ['Gabarito', 'sans-serif']
+      },
+      fontWeight: {
+        regular: 400,   // Regular weight
+        medium: 500,    // Medium weight
+        semibold: 600,  // SemiBold weight
+        bold: 700,      // Bold weight
+        extrabold: 800, // ExtraBold weight
+        black: 900,     // Black weight
       },
       fontSize: {
         "heading": ['4rem', {
@@ -26,7 +30,7 @@ export default {
           letterSpacing: '-0.02em',
           fontWeight: '700',
         }],
-      }
+      },
     },
   },
   plugins: [],
