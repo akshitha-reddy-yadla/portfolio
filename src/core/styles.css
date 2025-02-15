@@ -42,18 +42,3 @@ button {
     margin: 2px;
     cursor: pointer;
 }
-
-/* @media screen and (min-width: 920px) {
-
-    .md__full_page {
-        width: 100vw;
-        height: 80vh;
-    }
-
-    .section {
-        justify-content: center;
-        align-items: center;
-    }
-
-}
-*/

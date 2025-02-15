@@ -1,8 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { v4 as uuidv4 } from "uuid";
+import React, { useRef, useEffect } from 'react'
 import './Services.css';
 import '../../core/styles.css';
-import { useInView } from 'react-intersection-observer';
 import gsap from "gsap";
 
 import loki from '../../assets/loki.svg';
@@ -25,12 +23,12 @@ const data = [
     name: "Android development",
     icons: [
       {
-        id: uuidv4(),
+        id: 2,
         name: "Dart",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg"
       },
       {
-        id: uuidv4(),
+        id: 3,
         name: "Kotlin",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg"
       },
@@ -42,17 +40,17 @@ const data = [
     name: "Back-end development",
     icons: [
       {
-        id: uuidv4(),
+        id: 4,
         name: "Ruby",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ruby/ruby-original.svg"
       },
       {
-        id: uuidv4(),
+        id: 5,
         name: "JavaScript",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
       },
       {
-        id: uuidv4(),
+        id: 6,
         name: "Java",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
       },
@@ -136,38 +134,6 @@ export default function Services() {
     </div>
   )
 }
-
-
-const Card = ({ title, description, icons, delay }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const cardRef = useRef(null);
-
-  const { ref, inView } = useInView({
-    triggerOnce: false,
-    threshold: 0.5,
-  });
-
-  return (
-    <div id={title} className="relative w-full pb-full tile">
-      <div className="absolute inset-0 flex items-center justify-center ">
-        <div className="bg-[#] flex__col flex__start mb-4">
-          <h2 className="text-2xl font-semibold">{title}</h2>
-          <p className="text-start text__description mt-2">{description}</p>
-          <div className='flex__center flex__row mt-2'>
-            {
-              icons.map((item) => (
-                <div key={item.name} className='flex__col flex__center mt-4 mr-6'>
-                  <img src={item.icon} alt={item.name} style={{ width: 40, height: 40 }} />
-                  <p>{item.name}</p>
-                </div>
-              ))
-            }
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 
 const ScrollingText = ({ words, icon }) => {

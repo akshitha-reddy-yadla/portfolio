@@ -6,7 +6,7 @@ import Hero from './components/hero/Hero'
 import Services from './components/services/Services'
 import Projects from './components/projects/Projects'
 import Navbar from './components/nav/NavBar'
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import emailjs from 'emailjs-com';
 
 import sparkle from './assets/sparkle.svg';
@@ -176,13 +176,10 @@ export default function App() {
     e.preventDefault();
     emailjs
       .sendForm(
-        "service_yh8ebpa",
-        "template_dc2iq06",
-        // import.meta.env.VITE_SERVICE_ID,
-        // import.meta.env.VITE_TEMPLATE_ID,
+        import.meta.env.VITE_EMAIL_SERVICE_ID,
+        import.meta.env.VITE_EMAIL_TEMPLATE_ID,
         e.target,
-        "hAe1w3PjHsde75I00"
-        // import.meta.env.VITE_PUBLIC_KEY
+        import.meta.env.VITE_EMAIL_PUBLIC_KEY
       ).then(() => {
         const div = document.getElementById('sent');
         if (div !== null) {
@@ -220,7 +217,6 @@ export default function App() {
           <Routes >
             <Route path="/" element={<Hero />} />
             <Route path="/services" element={<Services />} />
-            {/* <Route path="/experience" element={<Experience />} /> */}
             <Route path="/projects" element={<Projects />} />
           </Routes>
         </motion.section>
