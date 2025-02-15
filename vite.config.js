@@ -8,6 +8,10 @@ export default defineConfig({
   define: {
     "process.env": process.env,
   },
+  assetsInclude: ['**/*.jpg', '**/*.png', '**/*.svg', '**/*.gif'],
+  build: {
+    outDir: 'dist', // This is where Vite places the built files
+  },
   server: {
     hmr: {
       host: "localhost",
