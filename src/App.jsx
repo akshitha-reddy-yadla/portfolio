@@ -6,7 +6,7 @@ import Hero from './components/hero/Hero'
 import Services from './components/services/Services'
 import Projects from './components/projects/Projects'
 import Navbar from './components/nav/NavBar'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { HashRouter, Route, Routes } from 'react-router-dom'
 import emailjs from 'emailjs-com';
 
 import sparkle from './assets/sparkle.svg';
@@ -202,7 +202,7 @@ export default function App() {
   return (
     <>
       <InitialTransition />
-      <BrowserRouter>
+      <HashRouter>
         <Navbar />
         <AnimatePresence exitBeforeEnter />
         {showImage && (<img src={sparkle} style={{
@@ -279,7 +279,7 @@ export default function App() {
             </div>
           </div>
         )}
-      </BrowserRouter >
+      </HashRouter >
     </>
   )
 }
