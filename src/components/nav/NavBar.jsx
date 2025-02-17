@@ -21,7 +21,7 @@ const Navbar = () => {
             <nav className="">
                 <div className="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
                     {/* Logo */}
-                    <Link to="/" className="text-sm font-bold">Akshitha
+                    <Link to="/" className="text-sm z-10 font-bold">Akshitha
                     </Link>
 
                     {/* Hamburger Icon for Mobile */}
