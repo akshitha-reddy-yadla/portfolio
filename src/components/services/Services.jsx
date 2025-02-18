@@ -101,7 +101,6 @@ export default function Services() {
 
   return (
     <div className='section'>
-      scroll
       <div className="scrolling-container">
         <div className="scrolling-text">
           <ScrollingText words={words} icon={loki} />

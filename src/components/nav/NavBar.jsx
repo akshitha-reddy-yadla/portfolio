@@ -71,7 +71,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Menu Items */}
-                <div className="flex flex-col items-center space-y-8 text-orange-400 text-2xl">
+                <div className="flex flex-col items-center space-y-8 text-[#e7ded0] text-2xl">
                     <Link to="/" onClick={handleNavItemClick} className="hover:text-orange-100 transition-all duration-300">
                         Home
                     </Link>
