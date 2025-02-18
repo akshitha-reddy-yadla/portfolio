@@ -6,6 +6,10 @@ import svgr from 'vite-plugin-svgr';
 export default defineConfig({
   base: '/portfolio/',
   plugins: [react(), svgr()],
+  server: {
+    open: true,
+    port: 3001,
+  },
   define: {
     "process.env": process.env,
   },
