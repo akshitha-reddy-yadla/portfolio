@@ -3,16 +3,19 @@ export const data = [
         id: 1,
         name: "CrimeScene Atlas",
         description: "Explore infamous psychopaths from history on our interactive map, featuring a clickable list for easy exploration and locations associated with their crimes and exploits. Built as a seamless single-page application with React.",
+        link: "https://github.com/AkshithaReddy1899/psycho-search",
     },
     {
         id: 2,
         name: "Budget App",
         description: "Stay on top of your finances with our Budget app, a comprehensive full-stack application built with Ruby. Easily track your daily expenses across multiple categories, gaining valuable insights into your spending habits and helping you make informed decisions about your financial future.",
+        link: "https://github.com/AkshithaReddy1899/Budget-app",
     },
     {
         id: 3,
         name: "Menu App",
         description: "This innovative digital menu app is designed to cater to the needs of both partners and customers. Built with Flutter, this robust platform utilizes a single codebase to power both the mobile app and responsive web application, enabling effortless menu updates and hassle-free payments.",
+        link: "https://github.com/AkshithaReddy1899/digital_menu",
     },
     {
         id: 4,
@@ -23,5 +26,6 @@ export const data = [
         id: 5,
         name: "Productivity App",
         description: "A cutting-edge productivity mobile app, built with Flutter, harnesses the power of native features to help you stay focused. Track your screen time and app usage with precision, and block distracting apps to stay on track.",
+        link: "https://github.com/akshitha-reddy-yadla/focus",
     }
 ]

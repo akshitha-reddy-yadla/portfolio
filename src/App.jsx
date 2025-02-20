@@ -237,8 +237,7 @@ export default function App() {
               <div className='text-center'>
                 <span>Let's talk</span>
                 <br />
-                <span >Please drop your details below, and I will get back to you </span>
-                <br />
+                <p className='mx-10 text-sm' >Please drop your details below, and I will get back to you </p>
                 <span>Or</span>
                 <br />
                 <span >drop a mail at akshithayadla.reddy@gmail.com</span>

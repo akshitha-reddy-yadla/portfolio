@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './projects.module.css';
 import { data } from './data';
+import { FaGithub } from 'react-icons/fa';
+import { FaLinkedinIn } from 'react-icons/fa';
 
 export default function Projects() {
   return (
@@ -14,6 +16,12 @@ export default function Projects() {
               <div className={styles.projects__tile}>
                 <p className={styles.projects__title}>{item.name}</p>
                 <p className={styles.projects__description}>{item.description}</p>
+                {item.link ?
+                  <p className={styles.projects__icon__container}>
+                    <a href={item.link} target="_blank" className={styles.projects__link}>
+                      <FaGithub size={22} />
+                    </a>
+                  </p> : <span></span>}
               </div>
             </div>
           ))
